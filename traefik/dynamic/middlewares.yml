@@ -1,5 +1,16 @@
 http:
   middlewares:
+    # Authelia ForwardAuth (moved from Docker labels to file provider)
+    authelia:
+      forwardAuth:
+        address: "http://authelia:9091/api/authz/forward-auth"
+        trustForwardHeader: true
+        authResponseHeaders:
+          - Remote-User
+          - Remote-Groups
+          - Remote-Name
+          - Remote-Email
+
     # Security headers applied to all routes
     secure-headers:
       headers:

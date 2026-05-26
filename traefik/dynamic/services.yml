@@ -1,6 +1,12 @@
 http:
   # Services running on Cortex host (via host.docker.internal)
+  # + internal Docker services (authelia on proxy network)
   services:
+    authelia:
+      loadBalancer:
+        servers:
+          - url: "http://authelia:9091"
+
     qbittorrent:
       loadBalancer:
         servers:
@@ -37,6 +43,27 @@ http:
           - url: "http://host.docker.internal:3000"
 
   routers:
+    # Authelia portal — no auth middleware (it IS the auth)
+    authelia:
+      rule: "Host(`auth.jaganin.duckdns.org`)"
+      entrypoints:
+        - websecure
+      tls:
+        certResolver: duckdns
+      service: authelia
+
+    # Traefik dashboard
+    traefik-dashboard:
+      rule: "Host(`traefik.jaganin.duckdns.org`)"
+      entrypoints:
+        - websecure
+      tls:
+        certResolver: duckdns
+      middlewares:
+        - authelia
+        - secure-headers
+      service: api@internal
+
     qbittorrent:
       rule: "Host(`qbittorrent.jaganin.duckdns.org`)"
       entrypoints:
@@ -44,8 +71,8 @@ http:
       tls:
         certResolver: duckdns
       middlewares:
-        - authelia@docker
-        - secure-headers@file
+        - authelia
+        - secure-headers
       service: qbittorrent
 
     alfred:
@@ -55,8 +82,8 @@ http:
       tls:
         certResolver: duckdns
       middlewares:
-        - authelia@docker
-        - secure-headers@file
+        - authelia
+        - secure-headers
       service: alfred
 
     jellyfin:
@@ -65,9 +92,9 @@ http:
         - websecure
       tls:
         certResolver: duckdns
-      # Jellyfin gère sa propre auth — pas de middleware Authelia
+      # Jellyfin gère sa propre auth
       middlewares:
-        - secure-headers@file
+        - secure-headers
       service: jellyfin
 
     nextcloud:
@@ -77,7 +104,7 @@ http:
       tls:
         certResolver: duckdns
       middlewares:
-        - secure-headers@file
+        - secure-headers
       service: nextcloud
 
     paperless:
@@ -87,8 +114,8 @@ http:
       tls:
         certResolver: duckdns
       middlewares:
-        - authelia@docker
-        - secure-headers@file
+        - authelia
+        - secure-headers
       service: paperless
 
     immich:
@@ -99,7 +126,7 @@ http:
         certResolver: duckdns
       # Immich gère sa propre auth
       middlewares:
-        - secure-headers@file
+        - secure-headers
       service: immich
 
     openhands:
@@ -109,6 +136,6 @@ http:
       tls:
         certResolver: duckdns
       middlewares:
-        - authelia@docker
-        - secure-headers@file
+        - authelia
+        - secure-headers
       service: openhands

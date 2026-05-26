@@ -29,9 +29,7 @@ entryPoints:
               - "*.jaganin.duckdns.org"
 
 providers:
-  docker:
-    exposedByDefault: false
-    network: proxy
+  # File provider only — Docker provider disabled (API version incompatibility)
   file:
     directory: /etc/traefik/dynamic
     watch: true
