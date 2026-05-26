@@ -1,15 +1,40 @@
 http:
-  # Services running natively on Cortex (not in Docker)
+  # Services running on Cortex host (via host.docker.internal)
   services:
     qbittorrent:
       loadBalancer:
         servers:
-          - url: "http://localhost:8080"
+          - url: "http://host.docker.internal:8080"
 
-    openclaw:
+    alfred:
       loadBalancer:
         servers:
-          - url: "http://localhost:18789"
+          - url: "http://host.docker.internal:18789"
+
+    jellyfin:
+      loadBalancer:
+        servers:
+          - url: "http://host.docker.internal:8096"
+
+    nextcloud:
+      loadBalancer:
+        servers:
+          - url: "http://host.docker.internal:8090"
+
+    paperless:
+      loadBalancer:
+        servers:
+          - url: "http://host.docker.internal:8010"
+
+    immich:
+      loadBalancer:
+        servers:
+          - url: "http://host.docker.internal:2283"
+
+    openhands:
+      loadBalancer:
+        servers:
+          - url: "http://host.docker.internal:3000"
 
   routers:
     qbittorrent:
@@ -32,4 +57,58 @@ http:
       middlewares:
         - authelia@docker
         - secure-headers@file
-      service: openclaw
+      service: alfred
+
+    jellyfin:
+      rule: "Host(`jellyfin.jaganin.duckdns.org`)"
+      entrypoints:
+        - websecure
+      tls:
+        certResolver: duckdns
+      # Jellyfin gère sa propre auth — pas de middleware Authelia
+      middlewares:
+        - secure-headers@file
+      service: jellyfin
+
+    nextcloud:
+      rule: "Host(`nextcloud.jaganin.duckdns.org`)"
+      entrypoints:
+        - websecure
+      tls:
+        certResolver: duckdns
+      middlewares:
+        - secure-headers@file
+      service: nextcloud
+
+    paperless:
+      rule: "Host(`paperless.jaganin.duckdns.org`)"
+      entrypoints:
+        - websecure
+      tls:
+        certResolver: duckdns
+      middlewares:
+        - authelia@docker
+        - secure-headers@file
+      service: paperless
+
+    immich:
+      rule: "Host(`immich.jaganin.duckdns.org`)"
+      entrypoints:
+        - websecure
+      tls:
+        certResolver: duckdns
+      # Immich gère sa propre auth
+      middlewares:
+        - secure-headers@file
+      service: immich
+
+    openhands:
+      rule: "Host(`openhands.jaganin.duckdns.org`)"
+      entrypoints:
+        - websecure
+      tls:
+        certResolver: duckdns
+      middlewares:
+        - authelia@docker
+        - secure-headers@file
+      service: openhands
