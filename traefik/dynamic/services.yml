@@ -1,9 +1,19 @@
 http:
+  serversTransports:
+    insecureTransport:
+      insecureSkipVerify: true
+
   services:
     authelia:
       loadBalancer:
         servers:
           - url: "http://authelia:9091"
+
+    jeedom:
+      loadBalancer:
+        serversTransport: insecureTransport
+        servers:
+          - url: "https://192.168.1.2"
 
     qbittorrent:
       loadBalancer:
@@ -40,9 +50,56 @@ http:
         servers:
           - url: "http://host.docker.internal:3000"
 
+    homepage:
+      loadBalancer:
+        servers:
+          - url: "http://homepage:3000"
+
   routers:
     # All routers reference the same wildcard cert (*.jaganin.duckdns.org)
     # so Traefik only requests it once via DuckDNS DNS-01 challenge.
+
+    jeedom:
+      rule: "Host(`jaganin.duckdns.org`)"
+      entrypoints:
+        - websecure
+      tls:
+        certResolver: duckdns
+        domains:
+          - main: "jaganin.duckdns.org"
+            sans:
+              - "*.jaganin.duckdns.org"
+      middlewares:
+        - secure-headers
+      service: jeedom
+
+    jeedom-subdomain:
+      rule: "Host(`jeedom.jaganin.duckdns.org`)"
+      entrypoints:
+        - websecure
+      tls:
+        certResolver: duckdns
+        domains:
+          - main: "jaganin.duckdns.org"
+            sans:
+              - "*.jaganin.duckdns.org"
+      middlewares:
+        - secure-headers
+      service: jeedom
+
+    www:
+      rule: "Host(`www.jaganin.duckdns.org`)"
+      entrypoints:
+        - websecure
+      tls:
+        certResolver: duckdns
+        domains:
+          - main: "jaganin.duckdns.org"
+            sans:
+              - "*.jaganin.duckdns.org"
+      middlewares:
+        - www-to-jeedom-dashboard
+      service: jeedom
 
     authelia:
       rule: "Host(`auth.jaganin.duckdns.org`)"
@@ -172,3 +229,18 @@ http:
         - authelia
         - secure-headers
       service: openhands
+
+    dashboard:
+      rule: "Host(`dashboard.jaganin.duckdns.org`)"
+      entrypoints:
+        - websecure
+      tls:
+        certResolver: duckdns
+        domains:
+          - main: "jaganin.duckdns.org"
+            sans:
+              - "*.jaganin.duckdns.org"
+      middlewares:
+        - authelia
+        - secure-headers
+      service: homepage

@@ -1,0 +1,154 @@
+- Médias:
+    - Jellyfin:
+        icon: jellyfin.png
+        href: https://jellyfin.jaganin.duckdns.org
+        description: Médiathèque
+        widget:
+          type: jellyfin
+          url: http://host.docker.internal:8096
+          key: b5d3f4cce63d421d816a7e19685ee14b
+          enableNowPlaying: true
+
+    - Radarr:
+        icon: radarr.png
+        href: http://192.168.1.120:7878
+        description: Films
+        widget:
+          type: radarr
+          url: http://host.docker.internal:7878
+          key: 8b986aaf59b54addaa1e0d4acebbbfe0
+
+    - Sonarr:
+        icon: sonarr.png
+        href: http://192.168.1.120:8989
+        description: Séries TV
+        widget:
+          type: sonarr
+          url: http://host.docker.internal:8989
+          key: 14d423dc3d5046ce811a1872d019d1e0
+
+    - Readarr:
+        icon: readarr.png
+        href: http://192.168.1.120:8787
+        description: Livres (catalogue)
+
+- Photos:
+    - Immich:
+        icon: immich.png
+        href: https://immich.jaganin.duckdns.org
+        description: Bibliothèque photos & vidéos
+        widget:
+          type: immich
+          url: http://host.docker.internal:2283
+          key: gwRgqJGuEx8trtV4u7C5p4sm8sXZKg05jBPV1iz1B8
+          version: 2
+
+- Livres:
+    - Bookshelf:
+        icon: https://raw.githubusercontent.com/pennydreadful/bookshelf/main/public/favicon.ico
+        href: http://192.168.1.120:8788
+        description: Bibliothèque (hardcover)
+
+    - Bookshelf Softcover:
+        icon: https://raw.githubusercontent.com/pennydreadful/bookshelf/main/public/favicon.ico
+        href: http://192.168.1.120:8789
+        description: Bibliothèque (softcover)
+
+    - rreading-glasses:
+        icon: https://avatars.githubusercontent.com/u/149753862
+        href: http://192.168.1.120:8790
+        description: Proxy métadonnées livres
+
+- Téléchargements:
+    - qBittorrent:
+        icon: qbittorrent.png
+        href: https://qbittorrent.jaganin.duckdns.org
+        description: Client torrent
+        widget:
+          type: qbittorrent
+          url: http://host.docker.internal:8080
+          username: myst
+          password: q8OBIcG5FHX90GsYZzIedXUm
+
+    - Prowlarr:
+        icon: prowlarr.png
+        href: http://192.168.1.120:9696
+        description: Indexeurs
+        widget:
+          type: prowlarr
+          url: http://host.docker.internal:9696
+          key: 9cc54cc467e6420f8007cb22e66583b6
+
+    - cross-seed:
+        icon: https://avatars.githubusercontent.com/u/83978870
+        href: http://192.168.1.120:2468
+        description: Cross-seeding daemon
+
+- Documents:
+    - Paperless:
+        icon: paperless.png
+        href: https://paperless.jaganin.duckdns.org
+        description: Gestion documentaire
+        widget:
+          type: paperlessngx
+          url: http://host.docker.internal:8010
+          key: 66916500b180086bc8a0e800338a8ea431a79219
+
+    - Nextcloud:
+        icon: nextcloud.png
+        href: https://nextcloud.jaganin.duckdns.org
+        description: Cloud personnel
+        widget:
+          type: nextcloud
+          url: http://host.docker.internal:8090
+          username: admin
+          password: kL65hjVjRIaA865dZdNDqF2jkFGhtZBU
+
+- Domotique:
+    - Jeedom:
+        icon: jeedom.png
+        href: https://jeedom.jaganin.duckdns.org
+        description: Domotique
+
+- NAS:
+    - Synology:
+        icon: synology.png
+        href: http://192.168.1.5:5000
+        description: NAS Synology
+
+- IA & Agents:
+    - OpenClaw:
+        icon: https://avatars.githubusercontent.com/u/76263028
+        href: https://alfred.jaganin.duckdns.org
+        description: Gateway IA (Alfred / Jarvis)
+
+    - OpenHands:
+        icon: https://avatars.githubusercontent.com/u/158832426
+        href: https://openhands.jaganin.duckdns.org
+        description: Agent de développement IA
+
+    - AutoClaude:
+        icon: https://avatars.githubusercontent.com/u/195699673
+        href: http://192.168.1.120:3001
+        description: Dashboard AutoClaude
+
+- Infrastructure:
+    - AdGuard Home:
+        icon: adguard-home.png
+        href: http://192.168.1.120:3002
+        description: Blocage DNS & publicités
+        widget:
+          type: adguard
+          url: http://host.docker.internal:3002
+          username: myst
+          password: lUTsdvrnFU9Eu9b4u3n4Qbh1
+
+    - Traefik:
+        icon: traefik.png
+        href: https://traefik.jaganin.duckdns.org
+        description: Reverse proxy
+
+    - Authelia:
+        icon: authelia.png
+        href: https://auth.jaganin.duckdns.org
+        description: Authentification SSO
