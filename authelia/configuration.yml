@@ -1,0 +1,72 @@
+---
+theme: dark
+
+server:
+  host: 0.0.0.0
+  port: 9091
+
+log:
+  level: info
+
+totp:
+  issuer: jaganin.duckdns.org
+  period: 30
+  skew: 1
+
+authentication_backend:
+  file:
+    path: /config/users_database.yml
+    watch: true
+    search:
+      email: false
+      case_insensitive: false
+    password:
+      algorithm: argon2
+      argon2:
+        variant: argon2id
+        iterations: 3
+        memory: 65536
+        parallelism: 4
+        key_length: 32
+        salt_length: 16
+
+access_control:
+  default_policy: deny
+  rules:
+    # Authelia portal — always accessible
+    - domain: "auth.jaganin.duckdns.org"
+      policy: bypass
+
+    # All other services require 2FA
+    - domain: "*.jaganin.duckdns.org"
+      policy: two_factor
+
+session:
+  name: authelia_session
+  same_site: lax
+  inactivity: 5m
+  expiration: 1h
+  remember_me: 1M
+  cookies:
+    - name: authelia_session
+      domain: jaganin.duckdns.org
+      authelia_url: https://auth.jaganin.duckdns.org
+      default_redirection_url: https://auth.jaganin.duckdns.org
+  redis:
+    host: redis
+    port: 6379
+
+regulation:
+  max_retries: 5
+  find_time: 2m
+  ban_time: 5m
+
+storage:
+  local:
+    path: /config/db.sqlite3
+
+notifier:
+  # filesystem notifier — writes to a file instead of sending email
+  # Switch to smtp when email is available
+  filesystem:
+    filename: /config/notifications.txt

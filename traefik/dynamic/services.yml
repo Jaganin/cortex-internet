@@ -1,0 +1,35 @@
+http:
+  # Services running natively on Cortex (not in Docker)
+  services:
+    qbittorrent:
+      loadBalancer:
+        servers:
+          - url: "http://localhost:8080"
+
+    openclaw:
+      loadBalancer:
+        servers:
+          - url: "http://localhost:18789"
+
+  routers:
+    qbittorrent:
+      rule: "Host(`qbittorrent.jaganin.duckdns.org`)"
+      entrypoints:
+        - websecure
+      tls:
+        certResolver: duckdns
+      middlewares:
+        - authelia@docker
+        - secure-headers@file
+      service: qbittorrent
+
+    alfred:
+      rule: "Host(`alfred.jaganin.duckdns.org`)"
+      entrypoints:
+        - websecure
+      tls:
+        certResolver: duckdns
+      middlewares:
+        - authelia@docker
+        - secure-headers@file
+      service: openclaw

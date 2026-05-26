@@ -1,0 +1,20 @@
+http:
+  middlewares:
+    # Security headers applied to all routes
+    secure-headers:
+      headers:
+        frameDeny: true
+        browserXssFilter: true
+        contentTypeNosniff: true
+        forceSTSHeader: true
+        stsIncludeSubdomains: true
+        stsPreload: true
+        stsSeconds: 31536000
+        customRequestHeaders:
+          X-Forwarded-Proto: https
+
+    # Rate limiting — protect against brute force
+    rate-limit:
+      rateLimit:
+        average: 100
+        burst: 50

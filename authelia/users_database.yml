@@ -1,0 +1,11 @@
+---
+# User database for Authelia
+# Add password hash with: docker run --rm authelia/authelia:latest authelia crypto hash generate argon2 --password 'yourpassword'
+users:
+  clement:
+    disabled: false
+    displayname: "Clément"
+    password: "REPLACE_WITH_ARGON2_HASH"
+    email: clement.cunin@gmail.com
+    groups:
+      - admins

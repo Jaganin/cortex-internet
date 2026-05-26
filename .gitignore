@@ -1,0 +1,16 @@
+# Secrets — never commit
+.env
+authelia/db.sqlite3
+authelia/notifications.txt
+
+# TLS certificates
+traefik/certs/
+traefik/acme.json
+
+# Authelia generated keys
+authelia/secrets/
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.vscode/
