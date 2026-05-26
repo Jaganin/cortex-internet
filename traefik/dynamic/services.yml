@@ -201,8 +201,8 @@ http:
         - secure-headers
       service: paperless
 
-    immich:
-      rule: "Host(`immich.jaganin.duckdns.org`)"
+    photo:
+      rule: "Host(`photo.jaganin.duckdns.org`)"
       entrypoints:
         - websecure
       tls:
