@@ -83,7 +83,35 @@ identity_providers:
       - key_id: main
         algorithm: RS256
         use: sig
-        key_file: /config/secrets/oidc_jwk.pem
+        key: |
+          -----BEGIN PRIVATE KEY-----
+          MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDgMZkUytLenT8N
+          Ej0LZ4ItkM7sOeC0KOjDPZQB92WdhjLXyhi0orEJBYF43JsssGD8vQa1iU8TCOKk
+          rODo7GHtab65UxpPOQkaj3a3xEVevNaOgC9V8wF/qSQ92vArOZP0GYVXSLNOv4qw
+          +69c/ss6UlduzaY4TP4Mkg3Ch0J38COG9B8mUmRm2EGdlBw4pdFrq/1gJcPUBgbn
+          WNLdxYA95N91CruEMszSze67mpgixA6+nUXuWEdGzofSZjiVcM2iHgvB3DRIAbIm
+          MR+lfwl+L1NOjAMxvGCbrxoHtnwcljL0040zQeNMQriMEx3GbfkBl9FbbLqANBPG
+          hBYCM14hAgMBAAECggEAEchVVlUdIzuxQdnpviMUbAVRqGKR3HBnP/89I2fKZ1N6
+          6mtVCNTjum21no7O/x0xYDKlGtacj0uz4HB2+XqwbMqnrl71VgXV30W0WrCmePR9
+          BzoLJyPagVP69C4OwTr0rZatoSX61Prz5wRbnUJ3f7WCyl7k+Y+/0eLu1PhyEP20
+          6QYc/IVY14soshHsiM9I3fX8DvIF+Hyo7Ywbvaab9w5apq6T58eSOlMthVv7MbCT
+          1Oao8/OBBcSqn0y/G6HOedRgBJ79dc+MorwSYCM8efkEhoDJdgc01l3OT1gIXuuC
+          3VjW/AujiBlEsUORIPFr1pb+ETn6rTbt5yjNncBmsQKBgQD3tcFoobzywwu3IDCp
+          xOYpaPn+PQbCtr6a4ZMs+ylIqKoL3r+lbA+cJA4p6uX8GEJa49wUQpgtn+/2HKva
+          vFl0g5vNP4G9TJNQO2NlIzQ6j9iCxK2SJUHQ+9YlDjANjxyaq1f5GYf4e1Y8PTk0
+          MTf+D3nvrIx7nGQhqCrrJgCSKQKBgQDnsl48G2ZPAxSKhxviszAqWyzqw7mYjKhh
+          wa+SLGotFclc3L4fsTYv3OLdeVpZTW7HONq8aFISFDa9WD0GOwxioSgwy0N/y4Aw
+          I4a+0fG9J50zku1m+XYGS2sNhGLA/rmdXdL56aeeOYwbQ7iKU2CEH6qikvzDv+sG
+          qaJfUXSbOQKBgDHpMGg5to2fmTuzw7phTxLm8QA2IaeYFL22V+ZHUSEvwtuTbUAS
+          ju6iISx3BRIPfUc9BDoc1PbUdBA95K61Jr0gS4NGmYif5krTPIrDViG6nCB1Kpf4
+          49MM+zAKNMp2nIfZoGczqr75cv2+REls5WBOk/4j4UaC03YooUUyKglJAoGBAMjE
+          EkvbIifM73up30vtIQtSvfUfbC73kuBCSLRMsCQpALbqwAQONnn62Mo4YUWIhzkx
+          1rfzXUo1IcmoMBi6Cd1c78p4FyEhYQ5VemjW2rWhIeKSqgvUlaSWrUilMj0xe/0U
+          U8Ah6xB7pR/q6nlSDgvutJjy7PthzXGUhBI8LuJhAoGAY+IDa9eY1i0YzY4kcQ5q
+          POziPxnbjpabTd0ER6iDRk9ir/3tfrFH1SeqWnNQDZVD6dSgFeVoOUwal5vM5ffb
+          4RIF1P/2UyMlJeT1+NAA0I6XOjOZupgmZPS7AREHCoX+kDx7BxEAGB7ZA9qPPNKy
+          cyLCwMwkyQRbMR8LnJRP6y0=
+          -----END PRIVATE KEY-----
     clients:
       - client_id: immich
         client_name: Immich
