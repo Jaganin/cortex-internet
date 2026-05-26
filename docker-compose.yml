@@ -53,6 +53,8 @@ services:
       - proxy
     extra_hosts:
       - "host.docker.internal:host-gateway"
+    environment:
+      - HOMEPAGE_ALLOWED_HOSTS=dashboard.jaganin.duckdns.org
     volumes:
       - ./homepage/config:/app/config
       - /var/run/docker.sock:/var/run/docker.sock:ro
