@@ -42,7 +42,9 @@ certificatesResolvers:
       caServer: "https://acme-v02.api.letsencrypt.org/directory"
       dnsChallenge:
         provider: duckdns
-        delayBeforeCheck: 30
-        resolvers:
-          - "1.1.1.1:53"
-          - "8.8.8.8:53"
+        propagation:
+          delayBeforeChecks: 60s
+          disableANCheck: true
+          resolvers:
+            - "1.1.1.1:53"
+            - "8.8.8.8:53"
