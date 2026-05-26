@@ -41,21 +41,31 @@ http:
           - url: "http://host.docker.internal:3000"
 
   routers:
-    # No certResolver per router — wildcard cert *.jaganin.duckdns.org
-    # is obtained proactively via entrypoint config in traefik.yml
+    # All routers reference the same wildcard cert (*.jaganin.duckdns.org)
+    # so Traefik only requests it once via DuckDNS DNS-01 challenge.
 
     authelia:
       rule: "Host(`auth.jaganin.duckdns.org`)"
       entrypoints:
         - websecure
-      tls: {}
+      tls:
+        certResolver: duckdns
+        domains:
+          - main: "jaganin.duckdns.org"
+            sans:
+              - "*.jaganin.duckdns.org"
       service: authelia
 
     traefik-dashboard:
       rule: "Host(`traefik.jaganin.duckdns.org`)"
       entrypoints:
         - websecure
-      tls: {}
+      tls:
+        certResolver: duckdns
+        domains:
+          - main: "jaganin.duckdns.org"
+            sans:
+              - "*.jaganin.duckdns.org"
       middlewares:
         - authelia
         - secure-headers
@@ -65,7 +75,12 @@ http:
       rule: "Host(`qbittorrent.jaganin.duckdns.org`)"
       entrypoints:
         - websecure
-      tls: {}
+      tls:
+        certResolver: duckdns
+        domains:
+          - main: "jaganin.duckdns.org"
+            sans:
+              - "*.jaganin.duckdns.org"
       middlewares:
         - authelia
         - secure-headers
@@ -75,7 +90,12 @@ http:
       rule: "Host(`alfred.jaganin.duckdns.org`)"
       entrypoints:
         - websecure
-      tls: {}
+      tls:
+        certResolver: duckdns
+        domains:
+          - main: "jaganin.duckdns.org"
+            sans:
+              - "*.jaganin.duckdns.org"
       middlewares:
         - authelia
         - secure-headers
@@ -85,7 +105,12 @@ http:
       rule: "Host(`jellyfin.jaganin.duckdns.org`)"
       entrypoints:
         - websecure
-      tls: {}
+      tls:
+        certResolver: duckdns
+        domains:
+          - main: "jaganin.duckdns.org"
+            sans:
+              - "*.jaganin.duckdns.org"
       middlewares:
         - secure-headers
       service: jellyfin
@@ -94,7 +119,12 @@ http:
       rule: "Host(`nextcloud.jaganin.duckdns.org`)"
       entrypoints:
         - websecure
-      tls: {}
+      tls:
+        certResolver: duckdns
+        domains:
+          - main: "jaganin.duckdns.org"
+            sans:
+              - "*.jaganin.duckdns.org"
       middlewares:
         - secure-headers
       service: nextcloud
@@ -103,7 +133,12 @@ http:
       rule: "Host(`paperless.jaganin.duckdns.org`)"
       entrypoints:
         - websecure
-      tls: {}
+      tls:
+        certResolver: duckdns
+        domains:
+          - main: "jaganin.duckdns.org"
+            sans:
+              - "*.jaganin.duckdns.org"
       middlewares:
         - authelia
         - secure-headers
@@ -113,7 +148,12 @@ http:
       rule: "Host(`immich.jaganin.duckdns.org`)"
       entrypoints:
         - websecure
-      tls: {}
+      tls:
+        certResolver: duckdns
+        domains:
+          - main: "jaganin.duckdns.org"
+            sans:
+              - "*.jaganin.duckdns.org"
       middlewares:
         - secure-headers
       service: immich
@@ -122,7 +162,12 @@ http:
       rule: "Host(`openhands.jaganin.duckdns.org`)"
       entrypoints:
         - websecure
-      tls: {}
+      tls:
+        certResolver: duckdns
+        domains:
+          - main: "jaganin.duckdns.org"
+            sans:
+              - "*.jaganin.duckdns.org"
       middlewares:
         - authelia
         - secure-headers
