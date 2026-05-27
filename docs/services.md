@@ -124,6 +124,27 @@ Point the service's OAuth settings to:
 - **Issuer URL**: `https://auth.jaganin.duckdns.org`
 - **Client ID / Secret**: as defined above
 
+### Notes — Paperless-ngx OIDC specifics (allauth 65.x)
+
+- Use `client_secret_basic` in the Authelia client (allauth default — unlike most other clients that use `client_secret_post`)
+- Redirect URI: `https://paperless.jaganin.duckdns.org/accounts/oidc/authelia/login/callback/`
+- The OIDC provider module is **not** included by default: add `PAPERLESS_APPS: allauth.socialaccount.providers.openid_connect`
+- Configure via env:
+  ```yaml
+  PAPERLESS_APPS: allauth.socialaccount.providers.openid_connect
+  PAPERLESS_REDIRECT_LOGIN_TO_SSO: "true"
+  PAPERLESS_DISABLE_REGULAR_LOGIN: "true"
+  PAPERLESS_ACCOUNT_ALLOW_SIGNUPS: "false"
+  PAPERLESS_SOCIAL_AUTO_SIGNUP: "false"
+  PAPERLESS_SOCIALACCOUNT_PROVIDERS: >-
+    {"openid_connect": {"APPS": [{"provider_id": "authelia", "name": "Authelia",
+    "client_id": "paperless", "secret": "<plain_secret>",
+    "settings": {"server_url": "https://auth.jaganin.duckdns.org"}}]}}
+  ```
+- Linking OIDC to an existing user: allauth 65.x does not auto-connect by email.
+  Workaround: temporarily enable signups, complete the OIDC flow once (creates a temp user),
+  then in Django shell transfer the `SocialAccount` to the real user and delete the temp user.
+
 ### Notes — Nextcloud OIDC specifics
 
 - Include the `groups` scope in the client definition (Nextcloud's `user_oidc` requests it)
@@ -147,7 +168,7 @@ Point the service's OAuth settings to:
 | Traefik dashboard | `traefik.` | ✅ | ❌ | |
 | qBittorrent | `qbittorrent.` | ✅ | ❌ | |
 | Alfred | `alfred.` | ✅ | ❌ | |
-| Paperless | `paperless.` | ✅ | ❌ | OIDC natif possible |
+| Paperless | `paperless.` | ❌ bypass | ✅ | SSO Authelia OIDC (allauth 65.x) |
 | OpenHands | `openhands.` | ✅ | ❌ | |
 | Homepage | `dashboard.` | ✅ | ❌ | |
 | Jellyfin | `jellyfin.` | ❌ | ❌ | ⚠️ Accès sans auth |
