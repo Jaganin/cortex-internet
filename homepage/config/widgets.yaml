@@ -1,15 +1,21 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/configs/info-widgets/
+
 - resources:
     cpu: true
     memory: true
-    disk: /synology/media
+    disk: /
+    label: Cortex
 
 - glances:
     url: http://192.168.1.2:61208
     cpu: true
     mem: true
+    disk: /
     label: Raspberry Pi
     version: 4
 
 - search:
-    provider: google
+    provider: duckduckgo
     target: _blank
