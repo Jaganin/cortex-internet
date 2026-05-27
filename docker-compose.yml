@@ -25,6 +25,7 @@ services:
     image: authelia/authelia:latest
     container_name: authelia
     restart: unless-stopped
+    user: "1000:1000"
     networks:
       - proxy
     volumes:
@@ -50,6 +51,7 @@ services:
     image: ghcr.io/gethomepage/homepage:latest
     container_name: homepage
     restart: unless-stopped
+    user: "1000:1000"
     networks:
       - proxy
     extra_hosts:
