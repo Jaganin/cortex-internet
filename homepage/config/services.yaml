@@ -9,6 +9,29 @@
           key: b5d3f4cce63d421d816a7e19685ee14b
           enableNowPlaying: true
 
+    - C411:
+        icon: https://c411.org/favicon.ico
+        href: https://c411.org
+        description: Tracker privé
+        widget:
+          type: customapi
+          url: http://host.docker.internal:8411/
+          mappings:
+            - field: ratio
+              label: Ratio
+              format: float
+              maximumFractionDigits: 2
+            - field: uploaded_gib
+              label: Upload
+              format: float
+              suffix: " GiB"
+              maximumFractionDigits: 1
+            - field: downloaded_gib
+              label: Download
+              format: float
+              suffix: " GiB"
+              maximumFractionDigits: 1
+
     - Radarr:
         icon: radarr.png
         href: http://192.168.1.120:7878
@@ -65,34 +88,6 @@
           type: prowlarr
           url: http://host.docker.internal:9696
           key: 9cc54cc467e6420f8007cb22e66583b6
-
-    - cross-seed:
-        icon: https://avatars.githubusercontent.com/u/83978870
-        href: http://192.168.1.120:2468
-        description: Cross-seeding daemon
-
-    - C411:
-        icon: https://c411.org/favicon.ico
-        href: https://c411.org
-        description: Tracker privé
-        widget:
-          type: customapi
-          url: http://host.docker.internal:8411/
-          mappings:
-            - field: ratio
-              label: Ratio
-              format: float
-              maximumFractionDigits: 2
-            - field: uploaded_gib
-              label: Upload
-              format: float
-              suffix: " GiB"
-              maximumFractionDigits: 1
-            - field: downloaded_gib
-              label: Download
-              format: float
-              suffix: " GiB"
-              maximumFractionDigits: 1
 
 - Documents & Photos:
     - Immich:
