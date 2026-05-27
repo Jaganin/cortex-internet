@@ -90,6 +90,11 @@ http:
         servers:
           - url: "http://host.docker.internal:3001"
 
+    runalyze:
+      loadBalancer:
+        servers:
+          - url: "http://host.docker.internal:8920"
+
   routers:
     # All routers reference the same wildcard cert (*.jaganin.duckdns.org)
     # so Traefik only requests it once via DuckDNS DNS-01 challenge.
@@ -397,3 +402,18 @@ http:
         - authelia
         - secure-headers
       service: prowlarr
+
+    runalyze:
+      rule: "Host(`health.jaganin.duckdns.org`)"
+      entrypoints:
+        - websecure
+      tls:
+        certResolver: duckdns
+        domains:
+          - main: "jaganin.duckdns.org"
+            sans:
+              - "*.jaganin.duckdns.org"
+      middlewares:
+        - authelia
+        - secure-headers
+      service: runalyze

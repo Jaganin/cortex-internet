@@ -140,6 +140,12 @@
         href: https://openhands.jaganin.duckdns.org
         description: Agent de développement IA
 
+- Santé & Sport:
+    - Runalyze:
+        icon: https://runalyze.com/favicon.ico
+        href: https://health.jaganin.duckdns.org
+        description: Suivi santé & fitness (Fitbit)
+
 - Infrastructure:
     - Jeedom:
         icon: jeedom.png
