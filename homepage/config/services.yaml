@@ -113,7 +113,7 @@
 - NAS:
     - Synology:
         icon: synology.png
-        href: https://nas.jaganin.duckdns.org
+        href: https://synology.jaganin.duckdns.org
         description: NAS Synology
 
 - IA & Agents:
