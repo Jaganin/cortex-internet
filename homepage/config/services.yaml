@@ -127,7 +127,7 @@
         widget:
           type: iframe
           src: https://autoclaude.jaganin.duckdns.org/widget
-          classes: h-28 w-full
+          classes: h-32 w-full
           allowFullscreen: false
 
     - OpenClaw:
