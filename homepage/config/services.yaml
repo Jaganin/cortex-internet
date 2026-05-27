@@ -134,6 +134,12 @@
         icon: https://avatars.githubusercontent.com/u/195699673
         href: https://autoclaude.jaganin.duckdns.org
         description: Dashboard AutoClaude
+        widget:
+          type: iframe
+          src: https://autoclaude.jaganin.duckdns.org/api/quota-widget
+          classes: h-28 w-full
+          allowFullscreen: false
+          scrolling: auto
 
 - Infrastructure:
     - Jeedom:

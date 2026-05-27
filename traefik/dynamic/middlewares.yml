@@ -24,6 +24,20 @@ http:
         customRequestHeaders:
           X-Forwarded-Proto: https
 
+    # Security headers for iframe-embeddable endpoints (no frameDeny)
+    secure-headers-widget:
+      headers:
+        browserXssFilter: true
+        contentTypeNosniff: true
+        forceSTSHeader: true
+        stsIncludeSubdomains: true
+        stsPreload: true
+        stsSeconds: 31536000
+        customResponseHeaders:
+          Content-Security-Policy: "frame-ancestors 'self' https://dashboard.jaganin.duckdns.org"
+        customRequestHeaders:
+          X-Forwarded-Proto: https
+
     # Rate limiting — protect against brute force
     rate-limit:
       rateLimit:

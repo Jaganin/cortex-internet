@@ -324,6 +324,20 @@ http:
         - secure-headers
       service: autoclaude
 
+    autoclaude-widget:
+      rule: "Host(`autoclaude.jaganin.duckdns.org`) && Path(`/api/quota-widget`)"
+      entrypoints:
+        - websecure
+      tls:
+        certResolver: duckdns
+        domains:
+          - main: "jaganin.duckdns.org"
+            sans:
+              - "*.jaganin.duckdns.org"
+      middlewares:
+        - secure-headers-widget
+      service: autoclaude
+
     radarr:
       rule: "Host(`radarr.jaganin.duckdns.org`)"
       entrypoints:
