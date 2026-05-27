@@ -325,7 +325,7 @@ http:
       service: autoclaude
 
     autoclaude-widget:
-      rule: "Host(`autoclaude.jaganin.duckdns.org`) && Path(`/api/quota-widget`)"
+      rule: "Host(`autoclaude.jaganin.duckdns.org`) && (Path(`/api/quota-widget`) || Path(`/api/quota`) || Path(`/widget`))"
       entrypoints:
         - websecure
       tls:

@@ -126,7 +126,7 @@
         description: Dashboard AutoClaude
         widget:
           type: iframe
-          src: https://autoclaude.jaganin.duckdns.org/api/quota-widget
+          src: https://autoclaude.jaganin.duckdns.org/widget
           classes: h-28 w-full
           allowFullscreen: false
 
