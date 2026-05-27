@@ -90,10 +90,10 @@ http:
         servers:
           - url: "http://host.docker.internal:3001"
 
-    runalyze:
+    sparkyfitness:
       loadBalancer:
         servers:
-          - url: "http://host.docker.internal:8920"
+          - url: "http://host.docker.internal:3004"
 
   routers:
     # All routers reference the same wildcard cert (*.jaganin.duckdns.org)
@@ -403,7 +403,7 @@ http:
         - secure-headers
       service: prowlarr
 
-    runalyze:
+    sparkyfitness:
       rule: "Host(`health.jaganin.duckdns.org`)"
       entrypoints:
         - websecure
@@ -414,6 +414,5 @@ http:
             sans:
               - "*.jaganin.duckdns.org"
       middlewares:
-        - authelia
         - secure-headers
-      service: runalyze
+      service: sparkyfitness
