@@ -129,6 +129,7 @@
           src: https://autoclaude.jaganin.duckdns.org/api/quota-widget
           classes: h-28 w-full
           allowFullscreen: false
+          scrolling: auto
 
     - OpenClaw:
         icon: https://avatars.githubusercontent.com/u/76263028
@@ -139,7 +140,6 @@
         icon: https://avatars.githubusercontent.com/u/158832426
         href: https://openhands.jaganin.duckdns.org
         description: Agent de développement IA
-          scrolling: auto
 
 - Infrastructure:
     - Jeedom:
