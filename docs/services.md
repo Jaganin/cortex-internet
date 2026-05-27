@@ -124,15 +124,17 @@ Point the service's OAuth settings to:
 - **Issuer URL**: `https://auth.jaganin.duckdns.org`
 - **Client ID / Secret**: as defined above
 
-### ⚠️ Authelia file permissions
+### Notes — Nextcloud OIDC specifics
 
-Authelia runs as root and writes to `/config` (mounted from `authelia/`), making files
-root-owned. After any `git pull` that touches `authelia/`, fix permissions before
-restarting:
-
-```bash
-docker run --rm -v /opt/cortex-internet/authelia:/config alpine chown -R 1000:1000 /config
-```
+- Include the `groups` scope in the client definition (Nextcloud's `user_oidc` requests it)
+- Redirect URI: `https://nextcloud.jaganin.duckdns.org/apps/user_oidc/code`
+- App: **OpenID Connect user backend** (`user_oidc`), discovery endpoint: `https://auth.jaganin.duckdns.org/.well-known/openid-configuration`
+- Homepage widget must use the **public HTTPS URL** (`https://nextcloud.jaganin.duckdns.org`), not the internal HTTP port — Nextcloud enforces `Secure` cookies when `overwriteprotocol: https` is set
+- Configure `trusted_proxies` to avoid brute-force throttling on the Docker/LAN range:
+  ```bash
+  occ config:system:set trusted_proxies 0 --value=172.16.0.0/12
+  occ config:system:set trusted_proxies 1 --value=192.168.0.0/16
+  ```
 
 ---
 
@@ -149,5 +151,5 @@ docker run --rm -v /opt/cortex-internet/authelia:/config alpine chown -R 1000:10
 | OpenHands | `openhands.` | ✅ | ❌ | |
 | Homepage | `dashboard.` | ✅ | ❌ | |
 | Jellyfin | `jellyfin.` | ❌ | ❌ | ⚠️ Accès sans auth |
-| Nextcloud | `nextcloud.` | ❌ | ❌ | OIDC natif possible |
+| Nextcloud | `nextcloud.` | ❌ bypass | ✅ | SSO Authelia OIDC (`user_oidc`) |
 | Immich | `photo.` | ❌ bypass | ✅ | SSO Authelia OIDC |
