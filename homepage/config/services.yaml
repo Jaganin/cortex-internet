@@ -129,7 +129,6 @@
           src: https://autoclaude.jaganin.duckdns.org/api/quota-widget
           classes: h-28 w-full
           allowFullscreen: false
-          scrolling: auto
 
     - OpenClaw:
         icon: https://avatars.githubusercontent.com/u/76263028
