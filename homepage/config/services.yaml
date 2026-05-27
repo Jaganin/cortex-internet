@@ -89,7 +89,12 @@
           url: http://host.docker.internal:9696
           key: 9cc54cc467e6420f8007cb22e66583b6
 
-- Documents & Photos:
+- Documents, Photos & Santé:
+    - Runalyze:
+        icon: https://runalyze.com/favicon.ico
+        href: https://health.jaganin.duckdns.org
+        description: Suivi santé & fitness (Fitbit)
+
     - Immich:
         icon: immich.png
         href: https://photo.jaganin.duckdns.org
@@ -139,12 +144,6 @@
         icon: https://avatars.githubusercontent.com/u/158832426
         href: https://openhands.jaganin.duckdns.org
         description: Agent de développement IA
-
-- Santé & Sport:
-    - Runalyze:
-        icon: https://runalyze.com/favicon.ico
-        href: https://health.jaganin.duckdns.org
-        description: Suivi santé & fitness (Fitbit)
 
 - Infrastructure:
     - Jeedom:
