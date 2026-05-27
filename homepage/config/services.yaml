@@ -121,8 +121,8 @@
         widget:
           type: nextcloud
           url: http://host.docker.internal:8090
-          username: 68f2687398d9e58e53b1ed4e156aba6679534159f66a4e3930513414326b7a6e
-          password: bnqf4-k3jqd-wcjkX-fZ4Ha-XtjMd
+          username: Myst
+          password: qxrW1z4HSsiXllbsRiK2uU3r96OwIHlbJi94Zbadh9toXAeyxia6Xy3nFApqGtyKhfCkZL8r
 
 - IA & Agents:
     - AutoClaude:
