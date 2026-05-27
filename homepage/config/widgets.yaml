@@ -3,6 +3,13 @@
     memory: true
     disk: /synology/media
 
+- glances:
+    url: http://192.168.1.2:61208
+    cpu: true
+    mem: true
+    label: Raspberry Pi
+    version: 4
+
 - search:
     provider: google
     target: _blank
