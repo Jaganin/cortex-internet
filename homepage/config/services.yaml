@@ -122,7 +122,7 @@
           type: nextcloud
           url: http://host.docker.internal:8090
           username: Myst
-          password: qxrW1z4HSsiXllbsRiK2uU3r96OwIHlbJi94Zbadh9toXAeyxia6Xy3nFApqGtyKhfCkZL8r
+          password: HVlvxXSECP12bEW9Tl4VmAlY
 
 - IA & Agents:
     - AutoClaude:
