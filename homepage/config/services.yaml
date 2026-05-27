@@ -1,8 +1,8 @@
-- Médias:
+- MÃ©dias:
     - Jellyfin:
         icon: jellyfin.png
         href: https://jellyfin.jaganin.duckdns.org
-        description: Médiathèque
+        description: MÃ©diathÃ¨que
         widget:
           type: jellyfin
           url: http://host.docker.internal:8096
@@ -21,7 +21,7 @@
     - Sonarr:
         icon: sonarr.png
         href: http://192.168.1.120:8989
-        description: Séries TV
+        description: SÃ©ries TV
         widget:
           type: sonarr
           url: http://host.docker.internal:8989
@@ -36,7 +36,7 @@
     - Immich:
         icon: immich.png
         href: https://immich.jaganin.duckdns.org
-        description: Bibliothèque photos & vidéos
+        description: BibliothÃ¨que photos & vidÃ©os
         widget:
           type: immich
           url: http://host.docker.internal:2283
@@ -47,19 +47,19 @@
     - Bookshelf:
         icon: https://raw.githubusercontent.com/pennydreadful/bookshelf/main/public/favicon.ico
         href: http://192.168.1.120:8788
-        description: Bibliothèque (hardcover)
+        description: BibliothÃ¨que (hardcover)
 
     - Bookshelf Softcover:
         icon: https://raw.githubusercontent.com/pennydreadful/bookshelf/main/public/favicon.ico
         href: http://192.168.1.120:8789
-        description: Bibliothèque (softcover)
+        description: BibliothÃ¨que (softcover)
 
     - rreading-glasses:
         icon: https://avatars.githubusercontent.com/u/149753862
         href: http://192.168.1.120:8790
-        description: Proxy métadonnées livres
+        description: Proxy mÃ©tadonnÃ©es livres
 
-- Téléchargements:
+- TÃ©lÃ©chargements:
     - qBittorrent:
         icon: qbittorrent.png
         href: https://qbittorrent.jaganin.duckdns.org
@@ -113,7 +113,7 @@
 - NAS:
     - Synology:
         icon: synology.png
-        href: http://192.168.1.5:5000
+        href: https://nas.jaganin.duckdns.org
         description: NAS Synology
 
 - IA & Agents:
@@ -125,18 +125,18 @@
     - OpenHands:
         icon: https://avatars.githubusercontent.com/u/158832426
         href: https://openhands.jaganin.duckdns.org
-        description: Agent de développement IA
+        description: Agent de dÃ©veloppement IA
 
     - AutoClaude:
         icon: https://avatars.githubusercontent.com/u/195699673
-        href: http://192.168.1.120:3001
+        href: https://autoclaude.jaganin.duckdns.org
         description: Dashboard AutoClaude
 
 - Infrastructure:
     - AdGuard Home:
         icon: adguard-home.png
-        href: http://192.168.1.120:3002
-        description: Blocage DNS & publicités
+        href: https://adguard.jaganin.duckdns.org
+        description: Blocage DNS & publicitÃ©s
         widget:
           type: adguard
           url: http://host.docker.internal:3002
