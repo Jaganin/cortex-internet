@@ -45,6 +45,26 @@ http:
         servers:
           - url: "http://host.docker.internal:2283"
 
+    radarr:
+      loadBalancer:
+        servers:
+          - url: "http://host.docker.internal:7878"
+
+    sonarr:
+      loadBalancer:
+        servers:
+          - url: "http://host.docker.internal:8989"
+
+    readarr:
+      loadBalancer:
+        servers:
+          - url: "http://host.docker.internal:8787"
+
+    prowlarr:
+      loadBalancer:
+        servers:
+          - url: "http://host.docker.internal:9696"
+
     openhands:
       loadBalancer:
         servers:
@@ -303,3 +323,63 @@ http:
         - authelia
         - secure-headers
       service: autoclaude
+
+    radarr:
+      rule: "Host(`radarr.jaganin.duckdns.org`)"
+      entrypoints:
+        - websecure
+      tls:
+        certResolver: duckdns
+        domains:
+          - main: "jaganin.duckdns.org"
+            sans:
+              - "*.jaganin.duckdns.org"
+      middlewares:
+        - authelia
+        - secure-headers
+      service: radarr
+
+    sonarr:
+      rule: "Host(`sonarr.jaganin.duckdns.org`)"
+      entrypoints:
+        - websecure
+      tls:
+        certResolver: duckdns
+        domains:
+          - main: "jaganin.duckdns.org"
+            sans:
+              - "*.jaganin.duckdns.org"
+      middlewares:
+        - authelia
+        - secure-headers
+      service: sonarr
+
+    readarr:
+      rule: "Host(`readarr.jaganin.duckdns.org`)"
+      entrypoints:
+        - websecure
+      tls:
+        certResolver: duckdns
+        domains:
+          - main: "jaganin.duckdns.org"
+            sans:
+              - "*.jaganin.duckdns.org"
+      middlewares:
+        - authelia
+        - secure-headers
+      service: readarr
+
+    prowlarr:
+      rule: "Host(`prowlarr.jaganin.duckdns.org`)"
+      entrypoints:
+        - websecure
+      tls:
+        certResolver: duckdns
+        domains:
+          - main: "jaganin.duckdns.org"
+            sans:
+              - "*.jaganin.duckdns.org"
+      middlewares:
+        - authelia
+        - secure-headers
+      service: prowlarr

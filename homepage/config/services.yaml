@@ -34,7 +34,7 @@
 
     - Radarr:
         icon: radarr.png
-        href: http://192.168.1.120:7878
+        href: https://radarr.jaganin.duckdns.org
         description: Films
         widget:
           type: radarr
@@ -43,7 +43,7 @@
 
     - Sonarr:
         icon: sonarr.png
-        href: http://192.168.1.120:8989
+        href: https://sonarr.jaganin.duckdns.org
         description: Séries TV
         widget:
           type: sonarr
@@ -52,7 +52,7 @@
 
     - Readarr:
         icon: readarr.png
-        href: http://192.168.1.120:8787
+        href: https://readarr.jaganin.duckdns.org
         description: Livres (catalogue)
 
     - Bookshelf:
@@ -82,7 +82,7 @@
 
     - Prowlarr:
         icon: prowlarr.png
-        href: http://192.168.1.120:9696
+        href: https://prowlarr.jaganin.duckdns.org
         description: Indexeurs
         widget:
           type: prowlarr
