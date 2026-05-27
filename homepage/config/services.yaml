@@ -1,4 +1,4 @@
-- Médias:
+- Médias & Téléchargements:
     - Jellyfin:
         icon: jellyfin.png
         href: https://jellyfin.jaganin.duckdns.org
@@ -32,18 +32,6 @@
         href: http://192.168.1.120:8787
         description: Livres (catalogue)
 
-- Photos:
-    - Immich:
-        icon: immich.png
-        href: https://immich.jaganin.duckdns.org
-        description: Bibliothèque photos & vidéos
-        widget:
-          type: immich
-          url: http://host.docker.internal:2283
-          key: gwRgqJGuEx8trtV4u7C5p4sm8sXZKg05jBPV1iz1B8
-          version: 2
-
-- Livres:
     - Bookshelf:
         icon: https://raw.githubusercontent.com/pennydreadful/bookshelf/main/public/favicon.ico
         href: http://192.168.1.120:8788
@@ -59,7 +47,6 @@
         href: http://192.168.1.120:8790
         description: Proxy métadonnées livres
 
-- Téléchargements:
     - qBittorrent:
         icon: qbittorrent.png
         href: https://qbittorrent.jaganin.duckdns.org
@@ -84,30 +71,17 @@
         href: http://192.168.1.120:2468
         description: Cross-seeding daemon
 
-    - C411:
-        icon: https://c411.org/favicon.ico
-        href: https://c411.org
-        description: Tracker privé
+- Documents & Photos:
+    - Immich:
+        icon: immich.png
+        href: https://photo.jaganin.duckdns.org
+        description: Bibliothèque photos & vidéos
         widget:
-          type: customapi
-          url: http://host.docker.internal:8411/
-          mappings:
-            - field: ratio
-              label: Ratio
-              format: float
-              maximumFractionDigits: 2
-            - field: uploaded_gib
-              label: Upload
-              format: float
-              suffix: " GiB"
-              maximumFractionDigits: 1
-            - field: downloaded_gib
-              label: Download
-              format: float
-              suffix: " GiB"
-              maximumFractionDigits: 1
+          type: immich
+          url: http://host.docker.internal:2283
+          key: gwRgqJGuEx8trtV4u7C5p4sm8sXZKg05jBPV1iz1B8
+          version: 2
 
-- Documents:
     - Paperless:
         icon: paperless.png
         href: https://paperless.jaganin.duckdns.org
@@ -127,18 +101,6 @@
           username: admin
           password: kL65hjVjRIaA865dZdNDqF2jkFGhtZBU
 
-- Domotique:
-    - Jeedom:
-        icon: jeedom.png
-        href: https://jeedom.jaganin.duckdns.org
-        description: Domotique
-
-- NAS:
-    - Synology:
-        icon: synology.png
-        href: https://synology.jaganin.duckdns.org
-        description: NAS Synology
-
 - IA & Agents:
     - OpenClaw:
         icon: https://avatars.githubusercontent.com/u/76263028
@@ -156,6 +118,16 @@
         description: Dashboard AutoClaude
 
 - Infrastructure:
+    - Jeedom:
+        icon: jeedom.png
+        href: https://jeedom.jaganin.duckdns.org
+        description: Domotique
+
+    - Synology:
+        icon: synology.png
+        href: https://synology.jaganin.duckdns.org
+        description: NAS Synology
+
     - AdGuard Home:
         icon: adguard-home.png
         href: https://adguard.jaganin.duckdns.org
