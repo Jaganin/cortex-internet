@@ -55,6 +55,21 @@ http:
         servers:
           - url: "http://homepage:3000"
 
+    synology:
+      loadBalancer:
+        servers:
+          - url: "http://192.168.1.5:5000"
+
+    adguard:
+      loadBalancer:
+        servers:
+          - url: "http://host.docker.internal:3002"
+
+    autoclaude:
+      loadBalancer:
+        servers:
+          - url: "http://host.docker.internal:3001"
+
   routers:
     # All routers reference the same wildcard cert (*.jaganin.duckdns.org)
     # so Traefik only requests it once via DuckDNS DNS-01 challenge.
@@ -243,3 +258,48 @@ http:
         - authelia
         - secure-headers
       service: homepage
+
+    synology:
+      rule: "Host(`nas.jaganin.duckdns.org`)"
+      entrypoints:
+        - websecure
+      tls:
+        certResolver: duckdns
+        domains:
+          - main: "jaganin.duckdns.org"
+            sans:
+              - "*.jaganin.duckdns.org"
+      middlewares:
+        - authelia
+        - secure-headers
+      service: synology
+
+    adguard:
+      rule: "Host(`adguard.jaganin.duckdns.org`)"
+      entrypoints:
+        - websecure
+      tls:
+        certResolver: duckdns
+        domains:
+          - main: "jaganin.duckdns.org"
+            sans:
+              - "*.jaganin.duckdns.org"
+      middlewares:
+        - authelia
+        - secure-headers
+      service: adguard
+
+    autoclaude:
+      rule: "Host(`autoclaude.jaganin.duckdns.org`)"
+      entrypoints:
+        - websecure
+      tls:
+        certResolver: duckdns
+        domains:
+          - main: "jaganin.duckdns.org"
+            sans:
+              - "*.jaganin.duckdns.org"
+      middlewares:
+        - authelia
+        - secure-headers
+      service: autoclaude
