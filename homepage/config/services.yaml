@@ -120,6 +120,16 @@
           password: kL65hjVjRIaA865dZdNDqF2jkFGhtZBU
 
 - IA & Agents:
+    - AutoClaude:
+        icon: https://autoclaude.jaganin.duckdns.org/favicon.png
+        href: https://autoclaude.jaganin.duckdns.org
+        description: Dashboard AutoClaude
+        widget:
+          type: iframe
+          src: https://autoclaude.jaganin.duckdns.org/api/quota-widget
+          classes: h-28 w-full
+          allowFullscreen: false
+
     - OpenClaw:
         icon: https://avatars.githubusercontent.com/u/76263028
         href: https://alfred.jaganin.duckdns.org
@@ -129,16 +139,6 @@
         icon: https://avatars.githubusercontent.com/u/158832426
         href: https://openhands.jaganin.duckdns.org
         description: Agent de développement IA
-
-    - AutoClaude:
-        icon: https://avatars.githubusercontent.com/u/195699673
-        href: https://autoclaude.jaganin.duckdns.org
-        description: Dashboard AutoClaude
-        widget:
-          type: iframe
-          src: https://autoclaude.jaganin.duckdns.org/api/quota-widget
-          classes: h-28 w-full
-          allowFullscreen: false
           scrolling: auto
 
 - Infrastructure:
