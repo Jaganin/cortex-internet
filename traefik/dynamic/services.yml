@@ -260,7 +260,7 @@ http:
       service: homepage
 
     synology:
-      rule: "Host(`nas.jaganin.duckdns.org`)"
+      rule: "Host(`synology.jaganin.duckdns.org`)"
       entrypoints:
         - websecure
       tls:
