@@ -32,6 +32,18 @@
               suffix: " GiB"
               maximumFractionDigits: 1
 
+    - Nostradamus:
+        icon: https://nostradamus.foo/favicon.ico
+        href: https://nostradamus.foo
+        description: Tracker privé
+        widget:
+          type: customapi
+          url: http://host.docker.internal:8411/nostradamus
+          mappings:
+            - field: points
+              label: Points
+              format: number
+
     - Radarr:
         icon: radarr.png
         href: https://radarr.jaganin.duckdns.org
