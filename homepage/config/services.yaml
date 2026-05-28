@@ -104,6 +104,7 @@
           url: http://host.docker.internal:2283
           key: gwRgqJGuEx8trtV4u7C5p4sm8sXZKg05jBPV1iz1B8
           version: 2
+          fields: ["photos", "videos", "storage"]
 
     - Paperless:
         icon: paperless.png
