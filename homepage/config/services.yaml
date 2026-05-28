@@ -43,6 +43,10 @@
             - field: points
               label: Points
               format: number
+            - field: rate
+              label: Points/jour
+              format: number
+              suffix: " pts/j"
 
     - Radarr:
         icon: radarr.png
