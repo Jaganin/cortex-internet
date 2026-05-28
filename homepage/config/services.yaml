@@ -167,6 +167,13 @@
         icon: jeedom.png
         href: https://jeedom.jaganin.duckdns.org
         description: Domotique
+        widget:
+          type: jeedom
+          url: https://jeedom.jaganin.duckdns.org
+          apikey: 3KPmVSTcsh07XWDQOKZJyqssjpPiiUSC
+          fields: ["lights", "temp_int", "temp_ext", "messages", "updates"]
+          temp_int_cmd_id: 862
+          temp_ext_cmd_id: 701
 
     - Synology:
         icon: synology.png
