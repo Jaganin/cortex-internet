@@ -44,7 +44,7 @@ certificatesResolvers:
         provider: duckdns
         propagation:
           delayBeforeChecks: 60s
-          disableANCheck: true
+          disableChecks: true
           resolvers:
             - "1.1.1.1:53"
             - "8.8.8.8:53"
