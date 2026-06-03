@@ -23,7 +23,3 @@
     disk: /volume1
     label: Synology
     version: 4
-
-- search:
-    provider: duckduckgo
-    target: _blank
