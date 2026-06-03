@@ -166,10 +166,10 @@
           username: myst
           password: lUTsdvrnFU9Eu9b4u3n4Qbh1
 
-    - TeamSpeak:
-        icon: teamspeak.png
-        href: ts3server://jaganin.duckdns.org
-        description: Serveur vocal
+    - Sharkord:
+        icon: https://avatars.githubusercontent.com/u/209766037
+        href: https://sharkord.jaganin.duckdns.org
+        description: Vocal, vidéo & partage d'écran
 
     - Traefik:
         icon: traefik.png

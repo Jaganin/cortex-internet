@@ -85,6 +85,11 @@ http:
         servers:
           - url: "http://host.docker.internal:3002"
 
+    sharkord:
+      loadBalancer:
+        servers:
+          - url: "http://sharkord:4991"
+
     autoclaude:
       loadBalancer:
         servers:
@@ -416,3 +421,17 @@ http:
       middlewares:
         - secure-headers
       service: sparkyfitness
+
+    sharkord:
+      rule: "Host(`sharkord.jaganin.duckdns.org`)"
+      entrypoints:
+        - websecure
+      tls:
+        certResolver: duckdns
+        domains:
+          - main: "jaganin.duckdns.org"
+            sans:
+              - "*.jaganin.duckdns.org"
+      middlewares:
+        - secure-headers
+      service: sharkord

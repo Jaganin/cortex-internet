@@ -62,18 +62,17 @@ services:
       - ./homepage/config:/app/config
       - /var/run/docker.sock:/var/run/docker.sock:ro
 
-  teamspeak:
-    image: teamspeak
-    container_name: teamspeak
+  sharkord:
+    image: sharkord/sharkord:latest
+    container_name: sharkord
     restart: unless-stopped
+    networks:
+      - proxy
     ports:
-      - "9987:9987/udp"
-      - "10011:10011"
-      - "30033:30033"
-    environment:
-      - TS3SERVER_LICENSE=accept
+      - "40000:40000/tcp"
+      - "40000:40000/udp"
     volumes:
-      - teamspeak-data:/var/ts3server
+      - sharkord-data:/home/bun/.config/sharkord
 
 networks:
   proxy:
@@ -83,4 +82,4 @@ networks:
 volumes:
   traefik-certs:
   redis-data:
-  teamspeak-data:
+  sharkord-data:
