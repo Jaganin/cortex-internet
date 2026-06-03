@@ -1,3 +1,4 @@
 #information-widgets > div {
-  flex: 0 0 100% !important;
+  flex: 1 1 0 !important;
+  min-width: 0 !important;
 }
