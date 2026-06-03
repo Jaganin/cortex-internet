@@ -62,6 +62,19 @@ services:
       - ./homepage/config:/app/config
       - /var/run/docker.sock:/var/run/docker.sock:ro
 
+  teamspeak:
+    image: teamspeak
+    container_name: teamspeak
+    restart: unless-stopped
+    ports:
+      - "9987:9987/udp"
+      - "10011:10011"
+      - "30033:30033"
+    environment:
+      - TS3SERVER_LICENSE=accept
+    volumes:
+      - teamspeak-data:/var/ts3server
+
 networks:
   proxy:
     name: proxy
@@ -70,3 +83,4 @@ networks:
 volumes:
   traefik-certs:
   redis-data:
+  teamspeak-data:

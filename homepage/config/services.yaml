@@ -166,6 +166,11 @@
           username: myst
           password: lUTsdvrnFU9Eu9b4u3n4Qbh1
 
+    - TeamSpeak:
+        icon: teamspeak.png
+        href: ts3server://jaganin.duckdns.org
+        description: Serveur vocal
+
     - Traefik:
         icon: traefik.png
         href: https://traefik.jaganin.duckdns.org
