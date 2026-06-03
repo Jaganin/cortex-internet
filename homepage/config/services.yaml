@@ -1,14 +1,4 @@
 - Médias & Téléchargements:
-    - Jellyfin:
-        icon: jellyfin.png
-        href: https://jellyfin.jaganin.duckdns.org
-        description: Médiathèque
-        widget:
-          type: jellyfin
-          url: http://host.docker.internal:8096
-          key: b5d3f4cce63d421d816a7e19685ee14b
-          enableNowPlaying: true
-
     - C411:
         icon: https://c411.org/favicon.ico
         href: https://c411.org
@@ -81,35 +71,16 @@
         href: http://192.168.1.120:8789
         description: Bibliothèque (softcover)
 
-    - rreading-glasses:
-        icon: https://avatars.githubusercontent.com/u/149753862
-        href: http://192.168.1.120:8790
-        description: Proxy métadonnées livres
-
-    - qBittorrent:
-        icon: qbittorrent.png
-        href: https://qbittorrent.jaganin.duckdns.org
-        description: Client torrent
-        widget:
-          type: qbittorrent
-          url: http://host.docker.internal:8080
-          username: myst
-          password: q8OBIcG5FHX90GsYZzIedXUm
-
-    - Prowlarr:
-        icon: prowlarr.png
-        href: https://prowlarr.jaganin.duckdns.org
-        description: Indexeurs
-        widget:
-          type: prowlarr
-          url: http://host.docker.internal:9696
-          key: 9cc54cc467e6420f8007cb22e66583b6
-
 - Documents, Photos & Santé:
-    - Runalyze:
-        icon: https://runalyze.com/favicon.ico
-        href: https://health.jaganin.duckdns.org
-        description: Suivi santé & fitness (Fitbit)
+    - Jellyfin:
+        icon: jellyfin.png
+        href: https://jellyfin.jaganin.duckdns.org
+        description: Médiathèque
+        widget:
+          type: jellyfin
+          url: http://host.docker.internal:8096
+          key: b5d3f4cce63d421d816a7e19685ee14b
+          enableNowPlaying: true
 
     - Immich:
         icon: immich.png
@@ -140,6 +111,11 @@
           url: http://host.docker.internal:8090
           username: Myst
           password: HVlvxXSECP12bEW9Tl4VmAlY
+
+    - Runalyze:
+        icon: https://runalyze.com/favicon.ico
+        href: https://health.jaganin.duckdns.org
+        description: Suivi santé & fitness (Fitbit)
 
 - IA & Agents:
     - AutoClaude:
@@ -199,3 +175,22 @@
         icon: authelia.png
         href: https://auth.jaganin.duckdns.org
         description: Authentification SSO
+
+    - qBittorrent:
+        icon: qbittorrent.png
+        href: https://qbittorrent.jaganin.duckdns.org
+        description: Client torrent
+        widget:
+          type: qbittorrent
+          url: http://host.docker.internal:8080
+          username: myst
+          password: q8OBIcG5FHX90GsYZzIedXUm
+
+    - Prowlarr:
+        icon: prowlarr.png
+        href: https://prowlarr.jaganin.duckdns.org
+        description: Indexeurs
+        widget:
+          type: prowlarr
+          url: http://host.docker.internal:9696
+          key: 9cc54cc467e6420f8007cb22e66583b6
