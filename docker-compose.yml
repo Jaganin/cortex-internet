@@ -72,7 +72,7 @@ services:
       - "40000:40000/tcp"
       - "40000:40000/udp"
     volumes:
-      - sharkord-data:/home/bun/.config/sharkord
+      - /mnt/synology/sharkorb:/home/bun/.config/sharkord
 
 networks:
   proxy:
@@ -82,4 +82,3 @@ networks:
 volumes:
   traefik-certs:
   redis-data:
-  sharkord-data:
