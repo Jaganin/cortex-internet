@@ -1,4 +1,4 @@
-#information-widgets > div {
-  flex: 1 1 0 !important;
-  min-width: 0 !important;
+#information-widgets {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
 }
