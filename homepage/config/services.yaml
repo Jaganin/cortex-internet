@@ -62,7 +62,7 @@
         description: Livres (catalogue)
         widget:
           type: readarr
-          url: http://host.docker.internal:8787
+          url: https://readarr.jaganin.duckdns.org
           key: b58187be39f1400ebe166ab7f325b8a0
 
 
