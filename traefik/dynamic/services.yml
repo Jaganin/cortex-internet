@@ -58,7 +58,7 @@ http:
     readarr:
       loadBalancer:
         servers:
-          - url: "http://host.docker.internal:8787"
+          - url: "http://host.docker.internal:8789"
 
     prowlarr:
       loadBalancer:
