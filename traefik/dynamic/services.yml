@@ -300,7 +300,6 @@ http:
             sans:
               - "*.jaganin.duckdns.org"
       middlewares:
-        - authelia
         - secure-headers
       service: synology
 
