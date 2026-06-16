@@ -112,7 +112,7 @@
         href: https://health.jaganin.duckdns.org
         description: Suivi santé & fitness (Fitbit)
 
-- IA & Agents:
+- IA, Agents & Finance:
     - AutoClaude:
         icon: https://autoclaude.jaganin.duckdns.org/favicon.png
         href: https://autoclaude.jaganin.duckdns.org
@@ -133,7 +133,6 @@
         href: https://openhands.jaganin.duckdns.org
         description: Agent de développement IA
 
-- Finance:
     - Firefly III:
         icon: firefly.png
         href: https://budget.jaganin.duckdns.org
