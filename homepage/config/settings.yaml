@@ -3,3 +3,15 @@ theme: dark
 color: slate
 headerStyle: clean
 language: fr
+
+layout:
+  Médias & Téléchargements:
+    column: 1
+  Documents, Photos & Santé:
+    column: 2
+  IA & Agents:
+    column: 3
+  Finance:
+    column: 3
+  Infrastructure:
+    column: 4
