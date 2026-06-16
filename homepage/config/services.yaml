@@ -1,3 +1,14 @@
+- Finance:
+    - Firefly III:
+        icon: firefly.png
+        href: https://budget.jaganin.duckdns.org
+        description: Budget & comptabilité personnelle
+
+    - Ghostfolio:
+        icon: https://ghostfol.io/assets/favicons/favicon.ico
+        href: https://invest.jaganin.duckdns.org
+        description: Suivi de portefeuille d'investissements
+
 - Médias & Téléchargements:
     - C411:
         icon: https://c411.org/favicon.ico

@@ -90,6 +90,16 @@ http:
         servers:
           - url: "http://sharkord:4991"
 
+    firefly3:
+      loadBalancer:
+        servers:
+          - url: "http://host.docker.internal:8082"
+
+    ghostfolio:
+      loadBalancer:
+        servers:
+          - url: "http://host.docker.internal:3333"
+
     autoclaude:
       loadBalancer:
         servers:
@@ -434,3 +444,33 @@ http:
       middlewares:
         - secure-headers
       service: sharkord
+
+    budget:
+      rule: "Host(`budget.jaganin.duckdns.org`)"
+      entrypoints:
+        - websecure
+      tls:
+        certResolver: duckdns
+        domains:
+          - main: "jaganin.duckdns.org"
+            sans:
+              - "*.jaganin.duckdns.org"
+      middlewares:
+        - authelia
+        - secure-headers
+      service: firefly3
+
+    invest:
+      rule: "Host(`invest.jaganin.duckdns.org`)"
+      entrypoints:
+        - websecure
+      tls:
+        certResolver: duckdns
+        domains:
+          - main: "jaganin.duckdns.org"
+            sans:
+              - "*.jaganin.duckdns.org"
+      middlewares:
+        - authelia
+        - secure-headers
+      service: ghostfolio
