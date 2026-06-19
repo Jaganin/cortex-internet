@@ -100,6 +100,11 @@ http:
         servers:
           - url: "http://host.docker.internal:3333"
 
+    cortex-firefly3-importer:
+      loadBalancer:
+        servers:
+          - url: "http://host.docker.internal:8083"
+
     autoclaude:
       loadBalancer:
         servers:
@@ -474,3 +479,17 @@ http:
         - authelia
         - secure-headers
       service: ghostfolio
+
+    firefly-importer:
+      rule: "Host(`firefly-importer.jaganin.duckdns.org`)"
+      entrypoints:
+        - websecure
+      tls:
+        certResolver: duckdns
+        domains:
+          - main: "jaganin.duckdns.org"
+            sans:
+              - "*.jaganin.duckdns.org"
+      middlewares:
+        - secure-headers
+      service: cortex-firefly3-importer

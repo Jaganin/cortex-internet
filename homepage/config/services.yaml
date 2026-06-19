@@ -143,6 +143,11 @@
         href: https://invest.jaganin.duckdns.org
         description: Suivi de portefeuille d'investissements
 
+    - Firefly III Importer:
+        icon: firefly.png
+        href: https://firefly-importer.jaganin.duckdns.org
+        description: Import de données pour Firefly III
+
 - Infrastructure:
     - Jeedom:
         icon: jeedom.png
