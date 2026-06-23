@@ -9,3 +9,10 @@ users:
     email: clement.cunin@gmail.com
     groups:
       - admins
+  mohini:
+    disabled: false
+    displayname: "Mohini"
+    password: "$argon2id$v=19$m=65536,t=3,p=4$Uy1k/fDxf7QfwAOGE36KSg$sG2FxYxaHf2YPySsp9DozPhuk3G97bHsXs6nw+lu99s"
+    email: mohini.jaganathen@gmail.com
+    groups:
+      - users

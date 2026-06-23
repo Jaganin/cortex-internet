@@ -51,7 +51,7 @@ services:
     image: homepage-jeedom:latest
     container_name: homepage
     restart: unless-stopped
-    user: "1000:1000"
+    user: "1000:111"
     networks:
       - proxy
     extra_hosts:

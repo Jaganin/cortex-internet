@@ -42,6 +42,8 @@
         icon: radarr.png
         href: https://radarr.jaganin.duckdns.org
         description: Films
+        server: cortex-docker
+        container: cortex-radarr
         widget:
           type: radarr
           url: http://host.docker.internal:7878
@@ -51,6 +53,8 @@
         icon: sonarr.png
         href: https://sonarr.jaganin.duckdns.org
         description: Séries TV
+        server: cortex-docker
+        container: cortex-sonarr
         widget:
           type: sonarr
           url: http://host.docker.internal:8989
@@ -71,6 +75,8 @@
         icon: jellyfin.png
         href: https://jellyfin.jaganin.duckdns.org
         description: Médiathèque
+        server: cortex-docker
+        container: cortex-jellyfin
         widget:
           type: jellyfin
           url: http://host.docker.internal:8096
@@ -81,6 +87,8 @@
         icon: immich.png
         href: https://photo.jaganin.duckdns.org
         description: Bibliothèque photos & vidéos
+        server: cortex-docker
+        container: immich_server
         widget:
           type: immich
           url: http://host.docker.internal:2283
@@ -92,6 +100,8 @@
         icon: paperless.png
         href: https://paperless.jaganin.duckdns.org
         description: Gestion documentaire
+        server: cortex-docker
+        container: paperless-webserver-1
         widget:
           type: paperlessngx
           url: http://host.docker.internal:8010
@@ -101,6 +111,8 @@
         icon: nextcloud.png
         href: https://nextcloud.jaganin.duckdns.org
         description: Cloud personnel
+        server: cortex-docker
+        container: nextcloud-nextcloud-1
         widget:
           type: nextcloud
           url: http://host.docker.internal:8090
@@ -117,6 +129,8 @@
         icon: https://autoclaude.jaganin.duckdns.org/favicon.png
         href: https://autoclaude.jaganin.duckdns.org
         description: Dashboard AutoClaude
+        server: cortex-docker
+        container: autoclaude-dashboard-1
         widget:
           type: iframe
           src: https://autoclaude.jaganin.duckdns.org/widget
@@ -127,11 +141,15 @@
         icon: https://avatars.githubusercontent.com/u/76263028
         href: https://alfred.jaganin.duckdns.org
         description: Gateway IA (Alfred / Jarvis)
+        server: cortex-docker
+        container: cortex-alfred
 
     - OpenHands:
         icon: https://avatars.githubusercontent.com/u/158832426
         href: https://openhands.jaganin.duckdns.org
         description: Agent de développement IA
+        server: cortex-docker
+        container: cortex-openhands
 
     - Actual Budget:
         icon: actual-budget.png
@@ -142,6 +160,8 @@
         icon: https://ghostfol.io/assets/favicons/favicon.ico
         href: https://invest.jaganin.duckdns.org
         description: Suivi de portefeuille d'investissements
+        server: cortex-docker
+        container: cortex-ghostfolio
 
 - Infrastructure:
     - Jeedom:
@@ -165,6 +185,8 @@
         icon: adguard-home.png
         href: https://adguard.jaganin.duckdns.org
         description: Blocage DNS & publicités
+        server: cortex-docker
+        container: adguardhome
         widget:
           type: adguard
           url: http://host.docker.internal:3002
@@ -175,21 +197,29 @@
         icon: https://avatars.githubusercontent.com/u/209766037
         href: https://sharkord.jaganin.duckdns.org
         description: Vocal, vidéo & partage d'écran
+        server: cortex-docker
+        container: sharkord
 
     - Traefik:
         icon: traefik.png
         href: https://traefik.jaganin.duckdns.org
         description: Reverse proxy
+        server: cortex-docker
+        container: traefik
 
     - Authelia:
         icon: authelia.png
         href: https://auth.jaganin.duckdns.org
         description: Authentification SSO
+        server: cortex-docker
+        container: authelia
 
     - qBittorrent:
         icon: qbittorrent.png
         href: https://qbittorrent.jaganin.duckdns.org
         description: Client torrent
+        server: cortex-docker
+        container: cortex-qbittorrent
         widget:
           type: qbittorrent
           url: http://host.docker.internal:8080
@@ -200,6 +230,8 @@
         icon: prowlarr.png
         href: https://prowlarr.jaganin.duckdns.org
         description: Indexeurs
+        server: cortex-docker
+        container: cortex-prowlarr
         widget:
           type: prowlarr
           url: http://host.docker.internal:9696
