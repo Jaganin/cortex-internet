@@ -155,6 +155,8 @@
         icon: actual-budget.png
         href: https://budget.jaganin.duckdns.org
         description: Budget & comptabilité personnelle
+        server: cortex-docker
+        container: cortex-actual
 
     - Ghostfolio:
         icon: https://ghostfol.io/assets/favicons/favicon.ico
