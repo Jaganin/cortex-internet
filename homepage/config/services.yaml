@@ -133,8 +133,8 @@
         href: https://openhands.jaganin.duckdns.org
         description: Agent de développement IA
 
-    - Firefly III:
-        icon: firefly.png
+    - Actual Budget:
+        icon: actual-budget.png
         href: https://budget.jaganin.duckdns.org
         description: Budget & comptabilité personnelle
 
@@ -142,11 +142,6 @@
         icon: https://ghostfol.io/assets/favicons/favicon.ico
         href: https://invest.jaganin.duckdns.org
         description: Suivi de portefeuille d'investissements
-
-    - Firefly III Importer:
-        icon: firefly.png
-        href: https://firefly-importer.jaganin.duckdns.org
-        description: Import de données pour Firefly III
 
 - Infrastructure:
     - Jeedom:
