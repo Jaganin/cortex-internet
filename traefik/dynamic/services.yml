@@ -363,6 +363,20 @@ http:
         - secure-headers-widget
       service: autoclaude
 
+    autoclaude-credentials:
+      rule: "Host(`autoclaude.jaganin.duckdns.org`) && Path(`/api/credentials`)"
+      entrypoints:
+        - websecure
+      tls:
+        certResolver: duckdns
+        domains:
+          - main: "jaganin.duckdns.org"
+            sans:
+              - "*.jaganin.duckdns.org"
+      middlewares:
+        - secure-headers
+      service: autoclaude
+
     radarr:
       rule: "Host(`radarr.jaganin.duckdns.org`)"
       entrypoints:
