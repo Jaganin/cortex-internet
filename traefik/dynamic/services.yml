@@ -116,6 +116,11 @@ http:
         servers:
           - url: "http://host.docker.internal:3004"
 
+    mycgp:
+      loadBalancer:
+        servers:
+          - url: "http://host.docker.internal:8020"
+
   routers:
     # All routers reference the same wildcard cert (*.jaganin.duckdns.org)
     # so Traefik only requests it once via DuckDNS DNS-01 challenge.
@@ -494,3 +499,18 @@ http:
         - authelia
         - secure-headers
       service: ghostfolio
+
+    mycgp:
+      rule: "Host(`mycgp.jaganin.duckdns.org`)"
+      entrypoints:
+        - websecure
+      tls:
+        certResolver: duckdns
+        domains:
+          - main: "jaganin.duckdns.org"
+            sans:
+              - "*.jaganin.duckdns.org"
+      middlewares:
+        - authelia
+        - secure-headers
+      service: mycgp

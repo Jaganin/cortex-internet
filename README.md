@@ -44,6 +44,7 @@ Internet
 | `traefik.jaganin.duckdns.org`     | Traefik dashboard           | ✅   |
 | `qbittorrent.jaganin.duckdns.org` | qBittorrent (localhost:8080)| ✅   |
 | `alfred.jaganin.duckdns.org`      | OpenClaw Alfred (port 18789)| ✅   |
+| `mycgp.jaganin.duckdns.org`       | MyCGP (localhost:8020)      | ✅   |
 
 ## Quick start
 

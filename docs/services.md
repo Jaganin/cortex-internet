@@ -174,3 +174,4 @@ Point the service's OAuth settings to:
 | Jellyfin | `jellyfin.` | ❌ | ❌ | ⚠️ Accès sans auth |
 | Nextcloud | `nextcloud.` | ❌ bypass | ✅ | SSO Authelia OIDC (`user_oidc`) |
 | Immich | `photo.` | ❌ bypass | ✅ | SSO Authelia OIDC |
+| MyCGP | `mycgp.` | ✅ | ❌ | Cortex natif, port 8020 |
