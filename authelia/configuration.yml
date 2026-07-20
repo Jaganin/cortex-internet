@@ -85,8 +85,15 @@ storage:
     path: /config/db.sqlite3
 
 notifier:
-  filesystem:
-    filename: /config/notifications.txt
+  smtp:
+    address: submissions://smtp.free.fr:465
+    timeout: 5s
+    username: clement.cunin@free.fr
+    password: "{{ env \"AUTHELIA_SMTP_PASSWORD\" }}"
+    sender: "Authelia <clement.cunin@free.fr>"
+    identifier: jaganin.duckdns.org
+    subject: "[Authelia] {title}"
+    startup_check_address: clement.cunin@free.fr
 
 identity_providers:
   oidc:
