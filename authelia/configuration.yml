@@ -90,7 +90,6 @@ notifier:
     address: submissions://smtp.gmail.com:465
     timeout: 5s
     username: clement.cunin@gmail.com
-    password: "{{ env \"AUTHELIA_SMTP_PASSWORD\" }}"
     sender: "Authelia <clement.cunin@gmail.com>"
     identifier: jaganin.duckdns.org
     subject: "[Authelia] {title}"
