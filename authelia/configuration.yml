@@ -86,14 +86,14 @@ storage:
 
 notifier:
   smtp:
-    address: submissions://smtp.free.fr:465
+    address: submissions://smtp.gmail.com:465
     timeout: 5s
-    username: clement.cunin@free.fr
+    username: clement.cunin@gmail.com
     password: "{{ env \"AUTHELIA_SMTP_PASSWORD\" }}"
-    sender: "Authelia <clement.cunin@free.fr>"
+    sender: "Authelia <clement.cunin@gmail.com>"
     identifier: jaganin.duckdns.org
     subject: "[Authelia] {title}"
-    startup_check_address: clement.cunin@free.fr
+    startup_check_address: clement.cunin@gmail.com
 
 identity_providers:
   oidc:
