@@ -93,7 +93,7 @@ notifier:
     sender: "Authelia <clement.cunin@gmail.com>"
     identifier: jaganin.duckdns.org
     subject: "[Authelia] {title}"
-    startup_check_address: clement.cunin@gmail.com
+    disable_startup_check: true
 
 identity_providers:
   oidc:
