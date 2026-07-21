@@ -124,7 +124,7 @@ http:
     leboncoin-mcp:
       loadBalancer:
         servers:
-          - url: "http://host.docker.internal:8040"
+          - url: "http://leboncoin-mcp:8040"
 
   routers:
     # All routers reference the same wildcard cert (*.jaganin.duckdns.org)

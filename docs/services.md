@@ -175,4 +175,4 @@ Point the service's OAuth settings to:
 | Nextcloud | `nextcloud.` | ❌ bypass | ✅ | SSO Authelia OIDC (`user_oidc`) |
 | Immich | `photo.` | ❌ bypass | ✅ | SSO Authelia OIDC |
 | MyCGP | `mycgp.` | ✅ | ❌ | Cortex natif, port 8020 |
-| leboncoin-mcp | `leboncoin.` | ✅ | ❌ | Cortex natif, port 8040, transport MCP SSE |
+| leboncoin-mcp | `leboncoin.` | ✅ | ❌ | Docker (build from `./lbc-mcp`), port 8040, transport MCP SSE |

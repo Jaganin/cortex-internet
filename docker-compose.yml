@@ -75,6 +75,21 @@ services:
     volumes:
       - /mnt/synology/sharkorb:/home/bun/.config/sharkord
 
+  leboncoin-mcp:
+    build:
+      context: ./lbc-mcp
+      dockerfile_inline: |
+        FROM python:3.12-slim
+        WORKDIR /app
+        COPY requirements.txt .
+        RUN pip install --no-cache-dir -r requirements.txt
+        COPY . .
+        CMD ["python", "server.py", "--sse", "--port=8040"]
+    container_name: leboncoin-mcp
+    restart: unless-stopped
+    networks:
+      - proxy
+
 networks:
   proxy:
     name: proxy
