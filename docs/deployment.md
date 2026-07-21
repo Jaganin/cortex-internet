@@ -81,6 +81,43 @@ docker compose logs traefik -f
 curl -I https://auth.jaganin.duckdns.org
 ```
 
+## Additional native services
+
+### leboncoin-mcp
+
+MCP server ([wydii/leboncoin-mcp](https://github.com/wydii/leboncoin-mcp)) exposing Leboncoin search to AI assistants, run natively (not in Docker) alongside this stack.
+
+```bash
+cd /opt/cortex-internet
+git clone https://github.com/wydii/leboncoin-mcp.git lbc-mcp
+cd lbc-mcp
+python3 -m venv .venv
+.venv/bin/pip install -r requirements.txt
+```
+
+Systemd unit (`/etc/systemd/system/leboncoin-mcp.service`):
+```ini
+[Unit]
+Description=leboncoin-mcp (MCP SSE server)
+After=network.target
+
+[Service]
+WorkingDirectory=/opt/cortex-internet/lbc-mcp
+ExecStart=/opt/cortex-internet/lbc-mcp/.venv/bin/python server.py --sse --port=8040
+Restart=on-failure
+User=cortex
+
+[Install]
+WantedBy=multi-user.target
+```
+
+```bash
+sudo systemctl daemon-reload
+sudo systemctl enable --now leboncoin-mcp
+```
+
+Exposed at `https://leboncoin.jaganin.duckdns.org` (Authelia-protected) via `traefik/dynamic/services.yml`.
+
 ## Updates
 
 ```bash

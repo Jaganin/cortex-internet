@@ -121,6 +121,11 @@ http:
         servers:
           - url: "http://host.docker.internal:8020"
 
+    leboncoin-mcp:
+      loadBalancer:
+        servers:
+          - url: "http://host.docker.internal:8040"
+
   routers:
     # All routers reference the same wildcard cert (*.jaganin.duckdns.org)
     # so Traefik only requests it once via DuckDNS DNS-01 challenge.
@@ -533,3 +538,18 @@ http:
       middlewares:
         - secure-headers
       service: mycgp
+
+    leboncoin-mcp:
+      rule: "Host(`leboncoin.jaganin.duckdns.org`)"
+      entrypoints:
+        - websecure
+      tls:
+        certResolver: duckdns
+        domains:
+          - main: "jaganin.duckdns.org"
+            sans:
+              - "*.jaganin.duckdns.org"
+      middlewares:
+        - authelia
+        - secure-headers
+      service: leboncoin-mcp
