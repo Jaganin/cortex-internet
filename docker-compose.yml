@@ -85,7 +85,7 @@ services:
         COPY requirements.txt .
         RUN pip install --no-cache-dir -r requirements.txt
         COPY . .
-        CMD ["python", "server.py", "--sse", "--port=8040"]
+        CMD ["python", "-c", "import server; server.mcp.run(transport='http', host='0.0.0.0', port=8040)"]
     container_name: leboncoin-mcp
     restart: unless-stopped
     networks:

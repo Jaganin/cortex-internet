@@ -105,9 +105,12 @@ docker run --rm httpd:2.4-alpine htpasswd -nbB <user> '<password>' \
 docker compose up -d traefik   # recreate to pick up the new secrets volume mount
 ```
 
-Client config example (MCP client with SSE transport + Basic Auth in the URL or an `Authorization: Basic` header):
+The Dockerfile overrides upstream's CLI (`server.py --sse`, legacy transport) and instead calls
+`server.mcp.run(transport='http', ...)` directly — modern **streamable-http** transport, served at `/mcp` (not `/sse`).
+
+Client config example (MCP client with streamable-http transport + Basic Auth in the URL or an `Authorization: Basic` header):
 ```
-https://<user>:<password>@leboncoin.jaganin.duckdns.org/sse
+https://<user>:<password>@leboncoin.jaganin.duckdns.org/mcp
 ```
 
 To update after an upstream change:
