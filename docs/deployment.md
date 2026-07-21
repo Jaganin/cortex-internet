@@ -95,7 +95,20 @@ docker compose up -d --build leboncoin-mcp
 
 The `dockerfile_inline` in `docker-compose.yml` builds the image directly from `./lbc-mcp` (requirements.txt + server.py). No host port is published — it's reached by Traefik over the `proxy` Docker network only.
 
-Exposed at `https://leboncoin.jaganin.duckdns.org` (Authelia-protected) via `traefik/dynamic/services.yml`.
+Exposed at `https://leboncoin.jaganin.duckdns.org` via `traefik/dynamic/services.yml`, protected by **Traefik Basic Auth** (not Authelia — MCP clients connect over SSE and can't complete Authelia's interactive TOTP login).
+
+Credentials file (gitignored, generate on Cortex):
+```bash
+mkdir -p /opt/cortex-internet/traefik/secrets
+docker run --rm httpd:2.4-alpine htpasswd -nbB <user> '<password>' \
+  > /opt/cortex-internet/traefik/secrets/leboncoin-mcp.htpasswd
+docker compose up -d traefik   # recreate to pick up the new secrets volume mount
+```
+
+Client config example (MCP client with SSE transport + Basic Auth in the URL or an `Authorization: Basic` header):
+```
+https://<user>:<password>@leboncoin.jaganin.duckdns.org/sse
+```
 
 To update after an upstream change:
 ```bash

@@ -550,6 +550,6 @@ http:
             sans:
               - "*.jaganin.duckdns.org"
       middlewares:
-        - authelia
+        - leboncoin-mcp-auth
         - secure-headers
       service: leboncoin-mcp

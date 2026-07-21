@@ -43,3 +43,9 @@ http:
       rateLimit:
         average: 100
         burst: 50
+
+    # Basic Auth for API/programmatic clients that can't do Authelia's
+    # interactive TOTP login (e.g. MCP clients over SSE)
+    leboncoin-mcp-auth:
+      basicAuth:
+        usersFile: /etc/traefik/secrets/leboncoin-mcp.htpasswd

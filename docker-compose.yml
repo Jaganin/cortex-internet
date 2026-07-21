@@ -19,6 +19,7 @@ services:
     volumes:
       - ./traefik/traefik.yml:/etc/traefik/traefik.yml:ro
       - ./traefik/dynamic:/etc/traefik/dynamic:ro
+      - ./traefik/secrets:/etc/traefik/secrets:ro
       - traefik-certs:/etc/traefik/certs
 
   authelia:
