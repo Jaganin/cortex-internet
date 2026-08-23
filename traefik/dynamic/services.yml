@@ -516,26 +516,6 @@ http:
             sans:
               - "*.jaganin.duckdns.org"
       middlewares:
-        - authelia
-        - secure-headers
-      service: mycgp
-
-    # MyCGP's own API already authenticates every /api/v1/* route itself
-    # (session cookie or revocable X-API-Key, MyCGP#31/#36) — Authelia would
-    # only add a second, redundant gate that a plain API client (curl,
-    # scripts) can't pass at all, since it has no Authelia session. Same
-    # pattern as autoclaude-credentials below.
-    mycgp-api:
-      rule: "Host(`mycgp.jaganin.duckdns.org`) && PathPrefix(`/api`)"
-      entrypoints:
-        - websecure
-      tls:
-        certResolver: duckdns
-        domains:
-          - main: "jaganin.duckdns.org"
-            sans:
-              - "*.jaganin.duckdns.org"
-      middlewares:
         - secure-headers
       service: mycgp
 
