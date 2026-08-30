@@ -1,8 +1,10 @@
 # Adding a new service
 
-## Service running in Docker
+## Service running in Docker (on the `proxy` network)
 
-Add labels to the service in `docker-compose.yml`:
+The Docker provider is opt-in (`exposedByDefault: false` in `traefik.yml`) — a container
+is only picked up if it carries `traefik.enable=true`. Add labels to the service in
+`docker-compose.yml`:
 
 ```yaml
   myapp:
@@ -14,9 +16,27 @@ Add labels to the service in `docker-compose.yml`:
       - "traefik.http.routers.myapp.rule=Host(`myapp.jaganin.duckdns.org`)"
       - "traefik.http.routers.myapp.entrypoints=websecure"
       - "traefik.http.routers.myapp.tls.certresolver=duckdns"
-      - "traefik.http.routers.myapp.middlewares=authelia@docker,secure-headers@file"
+      - "traefik.http.routers.myapp.middlewares=authelia@file,secure-headers@file"
       - "traefik.http.services.myapp.loadbalancer.server.port=8080"
 ```
+
+`authelia` and `secure-headers` are defined in `traefik/dynamic/middlewares.yml` (file
+provider), so a docker-provider router must reference them with the `@file` suffix —
+Traefik requires the provider namespace explicitly whenever it differs from the
+router's own provider.
+
+Only containers that actually run on Cortex's `proxy` Docker network are candidates for
+labels. Native services (Jeedom, qBittorrent, Synology, Alfred...) stay in the file
+provider below — there's no container for the Docker provider to attach labels to.
+
+### Blue/green deployments
+
+Multiple containers carrying the **same** `traefik.http.services.<name>.loadbalancer.*`
+label are aggregated into a single load balancer with one backend per container —
+confirmed by running two identically-labeled containers and checking
+`/api/http/services/<name>@docker` lists both. This is what makes zero-downtime
+deploys possible: start the new container (same service label) alongside the old one,
+wait for it to be healthy, then stop the old one — Traefik never drops traffic.
 
 ## Service running natively on Cortex
 
