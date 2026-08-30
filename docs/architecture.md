@@ -81,10 +81,12 @@ docker compose up -d traefik
 
 This drops back to file-provider-only routing (`traefik:v3.3`, no socket mount) —
 every service that was already on the file provider is unaffected, since it was never
-the file provider that changed. Only services migrated to Docker labels (currently
-just the leboncoin-mcp canary) need their `services.yml` entry to still exist to fall
-back to — which is exactly why the file entry isn't deleted until the label-based
-router has been validated against real traffic.
+the file provider that changed. A service already migrated to Docker labels (currently
+leboncoin-mcp) would go down along with the rollback until its `services.yml` entry is
+restored too (`git show <pre-migration-commit>:traefik/dynamic/services.yml`) — which
+is why each migration validates the label-based router against real traffic (checked
+here via `curl --resolve` for the expected response) before its file entry is removed,
+rather than deleting it in the same step the labels are added.
 
 ## Security posture
 

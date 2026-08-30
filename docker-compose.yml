@@ -80,13 +80,9 @@ services:
       - /mnt/synology/sharkorb:/home/bun/.config/sharkord
 
   leboncoin-mcp:
-    # Canary for the Docker provider migration (Jaganin/cortex-internet#docker-provider).
-    # Routing is still defined in traefik/dynamic/services.yml (file provider) as the
-    # source of truth; these labels are a parallel docker-provider router validated
-    # against real traffic before the file-provider entry is deleted. priority=100
-    # forces this router to win over the file-provider one (identical rule, otherwise
-    # a routing tie) during the validation window — drop it once the file entry is
-    # removed, it won't be needed anymore.
+    # First service migrated to the Docker provider (canary) — validated against real
+    # traffic (returns the expected 401 from leboncoin-mcp-auth) before the parallel
+    # traefik/dynamic/services.yml entry was removed.
     build:
       context: ./lbc-mcp
       dockerfile_inline: |
@@ -105,7 +101,6 @@ services:
       - "traefik.http.routers.leboncoin-mcp.rule=Host(`leboncoin.jaganin.duckdns.org`)"
       - "traefik.http.routers.leboncoin-mcp.entrypoints=websecure"
       - "traefik.http.routers.leboncoin-mcp.tls.certresolver=duckdns"
-      - "traefik.http.routers.leboncoin-mcp.priority=100"
       - "traefik.http.routers.leboncoin-mcp.middlewares=leboncoin-mcp-auth@file,secure-headers@file"
       - "traefik.http.services.leboncoin-mcp.loadbalancer.server.port=8040"
 

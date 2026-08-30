@@ -70,7 +70,7 @@ cortex-internet/
 │   ├── traefik.yml           # Static configuration
 │   └── dynamic/
 │       ├── middlewares.yml   # Authelia middleware + security headers
-│       └── services.yml      # Local service routes (non-Docker)
+│       └── services.yml      # Native/non-Docker service routes (file provider)
 ├── authelia/
 │   ├── configuration.yml     # Authelia config
 │   └── users_database.yml    # Local user database (bcrypt)
