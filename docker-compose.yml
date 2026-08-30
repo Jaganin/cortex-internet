@@ -1,7 +1,9 @@
 services:
 
   traefik:
-    image: traefik:v3.3
+    # v3.6+ required for the Docker provider: pre-3.6 Traefik's vendored Docker SDK
+    # defaults to API 1.24, which Docker Engine 29 rejects outright. See traefik.yml.
+    image: traefik:v3.6
     container_name: traefik
     restart: unless-stopped
     networks:
@@ -21,6 +23,7 @@ services:
       - ./traefik/dynamic:/etc/traefik/dynamic:ro
       - ./traefik/secrets:/etc/traefik/secrets:ro
       - traefik-certs:/etc/traefik/certs
+      - /var/run/docker.sock:/var/run/docker.sock:ro
 
   authelia:
     image: authelia/authelia:latest
@@ -77,6 +80,13 @@ services:
       - /mnt/synology/sharkorb:/home/bun/.config/sharkord
 
   leboncoin-mcp:
+    # Canary for the Docker provider migration (Jaganin/cortex-internet#docker-provider).
+    # Routing is still defined in traefik/dynamic/services.yml (file provider) as the
+    # source of truth; these labels are a parallel docker-provider router validated
+    # against real traffic before the file-provider entry is deleted. priority=100
+    # forces this router to win over the file-provider one (identical rule, otherwise
+    # a routing tie) during the validation window — drop it once the file entry is
+    # removed, it won't be needed anymore.
     build:
       context: ./lbc-mcp
       dockerfile_inline: |
@@ -90,6 +100,14 @@ services:
     restart: unless-stopped
     networks:
       - proxy
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.leboncoin-mcp.rule=Host(`leboncoin.jaganin.duckdns.org`)"
+      - "traefik.http.routers.leboncoin-mcp.entrypoints=websecure"
+      - "traefik.http.routers.leboncoin-mcp.tls.certresolver=duckdns"
+      - "traefik.http.routers.leboncoin-mcp.priority=100"
+      - "traefik.http.routers.leboncoin-mcp.middlewares=leboncoin-mcp-auth@file,secure-headers@file"
+      - "traefik.http.services.leboncoin-mcp.loadbalancer.server.port=8040"
 
 networks:
   proxy:
