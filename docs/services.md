@@ -38,6 +38,44 @@ confirmed by running two identically-labeled containers and checking
 deploys possible: start the new container (same service label) alongside the old one,
 wait for it to be healthy, then stop the old one — Traefik never drops traffic.
 
+### MyCGP — ephemeral PR previews (Jaganin/MyCGP#298)
+
+MyCGP runs 3 environment tiers, all reached via the Docker provider (labels set by
+MyCGP's own deploy/teardown script, out of scope here):
+
+- `mycgp.jaganin.duckdns.org` — prod, branch `main`
+- `preview.mycgp.jaganin.duckdns.org` — UAT, branch `preview`
+- `pr-<n>.preview.mycgp.jaganin.duckdns.org` — one throwaway instance per open PR
+
+The `preview` and `pr-<n>` tiers share a single wildcard cert
+(`*.preview.mycgp.jaganin.duckdns.org`, pre-provisioned in `traefik/traefik.yml`)
+instead of Traefik requesting a fresh cert per PR — that would risk hitting Let's
+Encrypt's 5 duplicate-certs/week rate limit if several PRs open and close in the same
+week. `mycgp.jaganin.duckdns.org` keeps its own existing cert, unchanged.
+
+Expected labels for a per-PR container, Host rule derived from the PR number:
+
+```yaml
+  mycgp-pr-<n>:
+    image: mycgp:pr-<n>
+    networks:
+      - proxy
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.mycgp-pr-<n>.rule=Host(`pr-<n>.preview.mycgp.jaganin.duckdns.org`)"
+      - "traefik.http.routers.mycgp-pr-<n>.entrypoints=websecure"
+      - "traefik.http.routers.mycgp-pr-<n>.tls.certresolver=duckdns"
+      - "traefik.http.routers.mycgp-pr-<n>.middlewares=secure-headers@file"
+      - "traefik.http.services.mycgp-pr-<n>.loadbalancer.server.port=8020"
+```
+
+No `tls.domains` override needed on the router — the wildcard cert covering
+`*.preview.mycgp.jaganin.duckdns.org` is already provisioned at the entrypoint level,
+so Traefik serves it for any matching SNI without a new ACME request. Same for the
+`preview` (UAT) router itself. Reuse `secure-headers@file` (defined in
+`traefik/dynamic/middlewares.yml`) like every other Docker-provider router; no
+`authelia` middleware — MyCGP handles its own auth.
+
 ## Service running natively on Cortex
 
 Add a router + service block in `traefik/dynamic/services.yml`:
@@ -194,5 +232,5 @@ Point the service's OAuth settings to:
 | Jellyfin | `jellyfin.` | ❌ | ❌ | ⚠️ Accès sans auth |
 | Nextcloud | `nextcloud.` | ❌ bypass | ✅ | SSO Authelia OIDC (`user_oidc`) |
 | Immich | `photo.` | ❌ bypass | ✅ | SSO Authelia OIDC |
-| MyCGP | `mycgp.` | ✅ | ❌ | Cortex natif, port 8020 |
+| MyCGP | `mycgp.` | ❌ own auth | ❌ | Docker provider (blue/green), port 8020. UAT (`preview.`) and per-PR (`pr-<n>.preview.`) tiers documented above |
 | leboncoin-mcp | `leboncoin.` | ❌ Basic Auth | ❌ | Docker (build from `./lbc-mcp`), port 8040, transport MCP SSE. Basic Auth instead of Authelia — MCP clients can't do interactive TOTP login |
