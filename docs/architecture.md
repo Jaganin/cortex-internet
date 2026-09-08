@@ -21,8 +21,15 @@
 
 Traefik handles wildcard certificates via **Let's Encrypt DNS-01** challenge using the DuckDNS provider (`lego`).
 
-- Single wildcard cert covers all `*.jaganin.duckdns.org`
-- Cert stored in a Docker volume (`traefik-certs`)
+- Wildcard cert for `*.jaganin.duckdns.org` covers every single-label subdomain
+  (`mycgp.`, `traefik.`, ...)
+- A second wildcard cert for `*.preview.mycgp.jaganin.duckdns.org` covers MyCGP's UAT
+  and per-PR preview tiers (`preview.mycgp.`, `pr-<n>.preview.mycgp.`, Jaganin/MyCGP#298)
+  — TLS SNI wildcard matching only covers one label deep, so the first cert doesn't
+  apply to these two-label subdomains even though DuckDNS's DNS already resolves them
+  to the right IP with no extra record. See `docs/services.md` for the expected
+  Docker-label pattern MyCGP's per-PR containers should carry.
+- Both certs stored in the same Docker volume (`traefik-certs`)
 - Auto-renewed before expiry
 
 ## Authentication flow

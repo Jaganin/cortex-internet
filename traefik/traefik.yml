@@ -27,6 +27,19 @@ entryPoints:
           - main: "jaganin.duckdns.org"
             sans:
               - "*.jaganin.duckdns.org"
+          # Pre-provisioned for MyCGP's UAT + per-PR preview tiers (Jaganin/MyCGP#298:
+          # preview.mycgp.* and pr-<n>.preview.mycgp.*). DuckDNS's DNS already resolves
+          # any-depth subdomains under jaganin.duckdns.org to the account's IP with no
+          # dedicated record needed (verified: preview.mycgp.jaganin.duckdns.org and an
+          # unregistered pr-999.preview.mycgp.jaganin.duckdns.org both resolve) — but TLS
+          # SNI wildcard matching only covers one label deep, so *.jaganin.duckdns.org
+          # does NOT match pr-<n>.preview.mycgp.jaganin.duckdns.org. Requesting this cert
+          # once here (rather than letting Traefik request one on demand per PR) avoids
+          # Let's Encrypt's 5 duplicate-certs/week rate limit if several PRs open/close
+          # in the same week.
+          - main: "preview.mycgp.jaganin.duckdns.org"
+            sans:
+              - "*.preview.mycgp.jaganin.duckdns.org"
 
 providers:
   # File provider — authoritative for native/non-Docker services (jeedom, qbittorrent,
