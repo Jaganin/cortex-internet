@@ -215,4 +215,8 @@ identity_providers:
           - openid
           - profile
           - email
-        token_endpoint_auth_method: client_secret_post
+        # Phoenix's OAuth2 client sends client_secret_basic by default (unlike most
+        # other clients here) — same situation as Paperless. Confirmed via Authelia
+        # error log: "registered client ... only support 'client_secret_post'" while
+        # Phoenix's actual request used 'client_secret_basic'.
+        token_endpoint_auth_method: client_secret_basic
