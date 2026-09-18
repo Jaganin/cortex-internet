@@ -137,19 +137,12 @@
           classes: h-32 w-full
           allowFullscreen: false
 
-    - OpenClaw:
-        icon: https://avatars.githubusercontent.com/u/76263028
-        href: https://alfred.jaganin.duckdns.org
-        description: Gateway IA (Alfred / Jarvis)
+    - Phoenix:
+        icon: https://github.com/Arize-ai.png
+        href: https://phoenix.jaganin.duckdns.org
+        description: Observabilité LLM (traces MyCGP / AutoClaude)
         server: cortex-docker
-        container: cortex-alfred
-
-    - OpenHands:
-        icon: https://avatars.githubusercontent.com/u/158832426
-        href: https://openhands.jaganin.duckdns.org
-        description: Agent de développement IA
-        server: cortex-docker
-        container: cortex-openhands
+        container: cortex-phoenix
 
     - Actual Budget:
         icon: actual-budget.png
