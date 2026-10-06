@@ -111,6 +111,13 @@ http:
         servers:
           - url: "http://host.docker.internal:3001"
 
+    # Orchestrator API (port 8000) — serves the MCP endpoint at /mcp, which the
+    # dashboard's nginx (3001) does not proxy.
+    autoclaude-orchestrator:
+      loadBalancer:
+        servers:
+          - url: "http://host.docker.internal:8000"
+
     sparkyfitness:
       loadBalancer:
         servers:
@@ -376,6 +383,22 @@ http:
       middlewares:
         - secure-headers
       service: autoclaude
+
+    # MCP endpoint: bypasses Authelia (MCP clients can't do an interactive
+    # login); the orchestrator itself enforces the X-API-Key header (#228).
+    autoclaude-mcp:
+      rule: "Host(`autoclaude.jaganin.duckdns.org`) && PathPrefix(`/mcp`)"
+      entrypoints:
+        - websecure
+      tls:
+        certResolver: duckdns
+        domains:
+          - main: "jaganin.duckdns.org"
+            sans:
+              - "*.jaganin.duckdns.org"
+      middlewares:
+        - secure-headers
+      service: autoclaude-orchestrator
 
     radarr:
       rule: "Host(`radarr.jaganin.duckdns.org`)"
