@@ -7,10 +7,11 @@
           type: customapi
           url: http://host.docker.internal:8411/
           mappings:
-            - field: ratio
-              label: Ratio
+            - field: download_margin_gib
+              label: Marge
               format: float
-              maximumFractionDigits: 2
+              suffix: " GiB"
+              maximumFractionDigits: 1
             - field: uploaded_gib
               label: Upload
               format: float
@@ -21,6 +22,9 @@
               format: float
               suffix: " GiB"
               maximumFractionDigits: 1
+            - field: download_status
+              label: Téléchargement
+              format: text
 
     - Nostradamus:
         icon: https://nostradamus.foo/favicon.ico
