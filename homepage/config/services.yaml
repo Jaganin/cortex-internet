@@ -8,23 +8,16 @@
           url: http://host.docker.internal:8411/
           mappings:
             - field: download_margin_gib
-              label: Marge
+              label: Téléchargeable
               format: float
-              suffix: " GiB"
+              suffix: " Go"
               maximumFractionDigits: 1
-            - field: uploaded_gib
-              label: Upload
-              format: float
-              suffix: " GiB"
-              maximumFractionDigits: 1
-            - field: downloaded_gib
-              label: Download
-              format: float
-              suffix: " GiB"
-              maximumFractionDigits: 1
-            - field: download_status
-              label: Téléchargement
+            - field: margin_delta_label
+              label: Évolution
               format: text
+            - field: zen
+              label: Zen
+              format: number
 
     - Nostradamus:
         icon: https://nostradamus.foo/favicon.ico
