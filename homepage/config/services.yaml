@@ -1,5 +1,5 @@
 - Médias & Téléchargements:
-    - C411:
+    - C411 Téléchargement:
         icon: https://c411.org/favicon.ico
         href: https://c411.org
         description: Tracker privé
@@ -15,9 +15,22 @@
             - field: margin_delta_label
               label: Évolution
               format: text
+
+    - C411 Zen:
+        icon: https://c411.org/favicon.ico
+        href: https://c411.org
+        description: Tracker privé
+        widget:
+          type: customapi
+          url: http://host.docker.internal:8411/
+          mappings:
             - field: zen
               label: Zen
               format: number
+              suffix: " zen"
+            - field: zen_delta_label
+              label: Évolution
+              format: text
 
     - Nostradamus:
         icon: https://nostradamus.foo/favicon.ico
